@@ -6,6 +6,7 @@ import Grid from '@mui/material/Grid';
 import Avatar from '@mui/material/Avatar';
 import NaviBar from './components/header.js';
 import OptionBars from './components/OptionBar.js';
+import {Link} from 'react-router-dom';
 import ImageSlider from './components/imgslider.js';
 
 
@@ -66,7 +67,7 @@ export default function BasicGrid() {
                     </Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 2</Item>
+                    <Item><Link to="/product">Grid 2</Link></Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>Grid 3</Item>
