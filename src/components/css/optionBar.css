@@ -1,0 +1,35 @@
+/* Add these styles to your CSS file */
+.option-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 10px;
+    background-color: lightgray;
+}
+
+.button-group {
+    display: flex;
+    gap: 10px;
+}
+
+.left {
+    justify-content: flex-start;
+}
+
+.right {
+    justify-content: flex-end;
+}
+
+.pastel-blue-button {
+    background-color: #a6c8e4; /* Pastel blue color */
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+    .pastel-blue-button:hover {
+        background-color: #84a9d8; /* Slightly darker shade on hover */
+    }

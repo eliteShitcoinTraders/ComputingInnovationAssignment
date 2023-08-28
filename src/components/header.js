@@ -47,7 +47,7 @@ function ResponsiveAppBar() {
                         component="a"
                         href="/"
                         sx={{
-                            mr: 7,
+                            mr: 10,
                             display: { xs: 'none', md: 'flex' },
                             fontFamily: 'monospace',
                             fontWeight: 700,
@@ -96,6 +96,7 @@ function ResponsiveAppBar() {
                             ))}
                         </Menu>
                     </Box>
+
                     <SavingsIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"

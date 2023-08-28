@@ -1,8 +1,12 @@
 import { useState } from 'react';
+import { useEffect } from 'react';
+
 
 
 const ImageSlider = ({ slides }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
+
+
 
 
 	const sliderstyles = {
@@ -55,6 +59,13 @@ const ImageSlider = ({ slides }) => {
 		const newIndex = isLastSlide ? 0 : currentIndex + 1;
 		setCurrentIndex(newIndex);
 	};
+
+	useEffect(() => {
+		const slideInterval = setInterval(goToNext, 5000); // Change slide every 5 seconds
+		return () => {
+			clearInterval(slideInterval);
+		};
+	}, [currentIndex]); // Run the effect whenever currentIndex changes
 	return (
 		<div style={sliderstyles}>
 			<div style={leftArrowStyles} onClick={goToPrevious}>(</div>

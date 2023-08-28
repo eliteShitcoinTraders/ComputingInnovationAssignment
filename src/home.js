@@ -3,10 +3,9 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
-//import ImageList from '@mui/material/ImageList';
-//import ImageListItem from '@mui/material/ImageListItem';
+import Avatar from '@mui/material/Avatar';
 import NaviBar from './components/header.js';
-
+import OptionBars from './components/OptionBar.js';
 import ImageSlider from './components/imgslider.js';
 
 
@@ -51,10 +50,20 @@ export default function BasicGrid() {
                         </div>
                     </Item>
                 </Grid>
+                <Grid item xs={2} sm={2} md={2}>
+                    <Item>
+                        < OptionBars/>
+                    </Item>
+                </Grid>
+                <Grid item xs={10} sm={10} md={10}>
+                </Grid>
+
+            </Grid>
+            <Grid container spacing={2} id="oneTh">
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
-
-                        grid 1</Item>
+                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
+                    </Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>Grid 2</Item>
@@ -73,9 +82,9 @@ export default function BasicGrid() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
                     <Item>footer</Item>
-                </Grid>
-
+                </Grid> 
             </Grid>
         </Box>
+
     );
 }
