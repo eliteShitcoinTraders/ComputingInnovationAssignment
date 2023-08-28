@@ -6,7 +6,7 @@ import Grid from '@mui/material/Grid';
 //import ImageList from '@mui/material/ImageList';
 //import ImageListItem from '@mui/material/ImageListItem';
 import NaviBar from './components/header.js';
-
+import {Link} from 'react-router-dom';
 import ImageSlider from './components/imgslider.js';
 
 
@@ -57,7 +57,7 @@ export default function BasicGrid() {
                         grid 1</Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 2</Item>
+                    <Item><Link to="/product">Grid 2</Link></Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>Grid 3</Item>
