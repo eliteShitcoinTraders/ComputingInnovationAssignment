@@ -11,9 +11,9 @@ const leftSideButton = {
 export default function BasicButtonGroup() {
     return (
         <ButtonGroup variant="contained" aria-label="outlined primary button group" >
-            <Button style={leftSideButton}>One</Button>
-            <Button style={leftSideButton}>Two</Button>
-            <Button style={leftSideButton}>Three</Button>
+            <Button style={leftSideButton}>today</Button>
+            <Button style={leftSideButton}>this week</Button>
+            <Button style={leftSideButton}>this month</Button>
         </ButtonGroup>
     );
 }

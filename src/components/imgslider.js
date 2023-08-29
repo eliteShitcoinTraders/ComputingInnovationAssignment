@@ -6,9 +6,6 @@ import { useEffect } from 'react';
 const ImageSlider = ({ slides }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-
-
-
 	const sliderstyles = {
 
 		height: "100%",
