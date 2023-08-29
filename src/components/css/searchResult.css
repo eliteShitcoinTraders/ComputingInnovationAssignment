@@ -1,0 +1,8 @@
+.resultColumn
+{
+    padding: 10px 15px;
+
+}
+.resultColumn:hover {
+    background-color:cornflowerblue;
+}

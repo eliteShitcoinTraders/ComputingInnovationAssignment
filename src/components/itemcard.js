@@ -23,8 +23,8 @@ const ItemCard = ({ NftData }) => {
     });
 
     const imageStyle = {
-        width: "150px", // Set the desired width
-        height: "150px", // Set the desired height
+        width: "100px", // Set the desired width
+        height: "100px", // Set the desired height
         borderRadius: "4px",
         marginRight: "40px", // Add spacing between image and content
     };
@@ -55,13 +55,13 @@ const ItemCard = ({ NftData }) => {
                     >
                         <img src={item.url} alt={item.name} style={imageStyle} />
                         <div style={contentStyle}>
-                            <h2 style={headerStyle}>{item.name}</h2>
+                            <h3 style={headerStyle}>{item.name}</h3>
                         </div>
                         <div style={contentStyle}>
-                            <h3>{item.priceFloor}ETH</h3>
+                            <h4>{item.priceFloor}ETH</h4>
                         </div>
                         <div style={contentStyle}>
-                            <h3>{item.volume}ETH</h3>
+                            <h4>{item.volume}ETH</h4>
                         </div>
                     </div>
                 </Grid>

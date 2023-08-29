@@ -3,11 +3,16 @@ import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
 
 const leftSideButton = {
-    margin:"0 auto",
-    fontSize: "18px",
-    padding: "10px 25px", // Add padding around the button text
+    margin: "0 auto",
+    fontSize: "12px",
+    fontWeight: "700",
+    padding: "5px 25px", // Add padding around the button text
+    width: "125px",
+    height: "50px",
+    fontFamily: 'monospace',
 
 };
+
 export default function BasicButtonGroup() {
     return (
         <ButtonGroup variant="contained" aria-label="outlined primary button group" >
