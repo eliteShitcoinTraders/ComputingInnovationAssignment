@@ -13,6 +13,7 @@ import NestedList from './components/dropdownlist.js';
 import GavelIcon from '@mui/icons-material/Gavel';
 import InfoIcon from '@mui/icons-material/Info';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import Footer from './components/footer.jsx';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -152,6 +153,10 @@ export default function BasicGrid() {
             <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350}/>} icon={<FormatListBulletedIcon />} heading={"Offers"}/>
           </Item>
           </Grid>
+
+          <Grid item xs={12} sm={12} md={12}>
+          <Item><Footer/></Item>
+        </Grid>
 
       </Grid>
     </Box>
