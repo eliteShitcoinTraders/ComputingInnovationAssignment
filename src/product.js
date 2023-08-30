@@ -122,8 +122,8 @@ export default function BasicGrid() {
           <Item>
             <div>
               <Image
-                src="https://images.unsplash.com/photo-1551963831-b3b1ca40c98e"
-                alt="ProductImage"
+                src="https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80"
+                alt="YodaNFTImage"
                 />
             </div>
           </Item>
