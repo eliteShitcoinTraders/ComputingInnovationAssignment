@@ -12,10 +12,10 @@ const ItemCard = ({ NftData }) => {
     };
 
     const gridItemStyle = (index) => ({
-        width: "100%", // Set width to fill the grid cell
+        width: "100%", 
         borderRadius: "4px",
         display: "flex",
-        alignItems: "center", // Align items vertically
+        alignItems: "center", 
         padding: "10px",
         transition: "background-color 0.3s",
         cursor: "pointer",
@@ -23,8 +23,8 @@ const ItemCard = ({ NftData }) => {
     });
 
     const imageStyle = {
-        width: "100px", // Set the desired width
-        height: "100px", // Set the desired height
+        width: "100px", 
+        height: "100px", 
         borderRadius: "4px",
         marginRight: "40px", // Add spacing between image and content
     };
@@ -32,8 +32,8 @@ const ItemCard = ({ NftData }) => {
     const contentStyle = {
         flex: "1",
         display: "flex",
-        justifyContent: "space-between", // Place headers next to each other
-        alignItems: "flex-start", // Align headers at the top
+        justifyContent: "space-between",
+        alignItems: "flex-start",
         flexDirection: "column",
     };
 

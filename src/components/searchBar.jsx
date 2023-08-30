@@ -1,9 +1,9 @@
-import React, { useState } from 'react'; // Import useState from React
+import React, { useState } from 'react'; 
 import SearchIcon from '@mui/icons-material/Search';
 import "./css/searchBar.css";
 
-const SearchBar = ({ setResults }) => { // Rename the component to start with an uppercase letter
-    const [input, setInput] = useState(null); // Use useState instead of React.useState
+const SearchBar = ({ setResults }) => { 
+    const [input, setInput] = useState(null); 
 
     const fetchData = (value) => {
         fetch("https://jsonplaceholder.typicode.com/users")

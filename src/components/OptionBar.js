@@ -6,7 +6,7 @@ const leftSideButton = {
     margin: "0 auto",
     fontSize: "12px",
     fontWeight: "700",
-    padding: "5px 25px", // Add padding around the button text
+    padding: "5px 25px",
     width: "100%",
     fontFamily: 'monospace',
 
