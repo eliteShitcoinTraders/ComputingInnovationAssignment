@@ -10,6 +10,9 @@ import ImageSlider from './components/imgslider.js';
 import Itemcard from './components/itemcard.js';
 import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
+import NotableRow from './components/notableRow.jsx';
+import FooterMain from './components/footer.jsx';
+
 
 import './components/css/itemcard.css';
 
@@ -41,6 +44,19 @@ const NftData = [
     { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", priceFloor: "145 ", volume: "564 " }
 
 ];
+
+
+const cardinfo = [
+    { url: "https://images.unsplash.com/photo-1609258612794-3502fb4306a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda1", priceFloor: "12 ", volume: "750 " },
+    { url: "https://images.unsplash.com/photo-1610714872435-96712ebf1594?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2654&q=80", name: "Yoda2", priceFloor: "11 ", volume: "146 " },
+    { url: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda3", priceFloor: "11 ", volume: "123 " },
+    { url: "https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80", name: "Yoda4", priceFloor: "11 ", volume: "2342 " },
+    { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", priceFloor: "123 ", volume: "234 " },
+    { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", priceFloor: "145 ", volume: "564 " }
+
+];
+
+
 const containerStyles = {
     width: "100%",
     height: "700px",
@@ -93,23 +109,64 @@ export default function BasicGrid() {
 
                     </Item>
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={12} md={12}>
                     <Item><Link to="/product">Grid 2</Link></Item>
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 3</Item>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 4</Item>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 5</Item>
-                </Grid>
-                <Grid item xs={12} sm={6} md={4}>
-                    <Item>Grid 6</Item>
+                    <Item>
+                        <div
+                            style={{
+                                fontSize: "15px",
+                                textAlign: "left",
+                                marginLeft:"20px"
+
+                            }}
+                        >Notable Collection</div>
+                    </Item>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                    <Item>footer</Item>
+                    <Item style={{ display: "flex" }}>
+                        <NotableRow cardinfo={cardinfo} />
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Item>
+                        <div
+                            style={{
+                                fontSize: "15px",
+                                textAlign: "left",
+                                marginLeft: "20px"
+
+                            }}
+                        >Top Collector Buys Today</div>
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Item style={{ display: "flex" }}>
+                        <NotableRow cardinfo={cardinfo} />
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={6} md={4}>
+                    <Item>
+                        <div
+                            style={{
+                                fontSize: "15px",
+                                textAlign: "left",
+                                marginLeft: "20px"
+
+                            }}
+                        >Trending in Art</div>
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Item style={{ display: "flex" }}>
+                        <NotableRow cardinfo={cardinfo} />
+                    </Item>
+                </Grid>
+                <Grid item xs={12} sm={12} md={12}>
+                    <Item>
+                        <FooterMain />
+                    </Item>
                 </Grid> 
             </Grid>
         </Box>
