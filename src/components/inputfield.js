@@ -16,10 +16,6 @@ const currencies = [
       label: '$ - USD',
     },
     {
-      value: 'EUR',
-      label: '€ - EUR',
-    },
-    {
       value: 'BTC',
       label: '฿ - BTC',
     },

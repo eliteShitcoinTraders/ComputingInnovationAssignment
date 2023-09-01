@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './css/itemcard.css';
 import Grid from '@mui/material/Grid';
+import { Link } from 'react-router-dom';
+
 
 const ItemCard = ({ NftData }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
@@ -44,16 +46,21 @@ const ItemCard = ({ NftData }) => {
     };
 
     return (
+        
         <div style={containerStyle}>
+            
             {NftData.map((item, index) => (
+                
                 <Grid key={index} item xs={12} sm={6} md={5.9}>
+                    
                     <div
                         className="grid-item"
                         style={gridItemStyle(index)}
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                    >
+                    >   <Link to="/product">
                         <img src={item.url} alt={item.name} style={imageStyle} />
+                        </Link>
                         <div style={contentStyle}>
                             <h3 style={headerStyle}>{item.name}</h3>
                         </div>
@@ -64,9 +71,13 @@ const ItemCard = ({ NftData }) => {
                             <h4>{item.volume}ETH</h4>
                         </div>
                     </div>
+                    
                 </Grid>
+                
             ))}
+            
         </div>
+        
     );
 }
 
