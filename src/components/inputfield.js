@@ -13,19 +13,19 @@ import MenuItem from '@mui/material/MenuItem';
 const currencies = [
     {
       value: 'USD',
-      label: '$- USD',
+      label: '$ - USD',
     },
     {
       value: 'EUR',
-      label: '€- EUR',
+      label: '€ - EUR',
     },
     {
       value: 'BTC',
-      label: '฿- BTC',
+      label: '฿ - BTC',
     },
     {
       value: 'AUD',
-      label: '$- AUD',
+      label: '$ - AUD',
     },
   ];
 
@@ -73,7 +73,7 @@ export default function Inputs() {
       <div>
         <TextField
           label="Wallet ID"
-          id="standard-start-adornment"
+          id="walletID"
           sx={{ m: 1, width: '50ch' }}
           variant="standard"
         />
