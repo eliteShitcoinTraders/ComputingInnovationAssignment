@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Im
 import BasicGrid from './home.js';
 import Product from './product'; // Import the component for the product page
 
+
 function App() {
     return (
         <div>
@@ -15,5 +16,6 @@ function App() {
         </div>
     );
 }
+
 
 export default App;

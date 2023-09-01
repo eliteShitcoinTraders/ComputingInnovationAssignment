@@ -5,10 +5,10 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 
-export default function CartButton() {
+export default function CartButton({label, onClick}) {
   return (
-    <Button variant="contained" startIcon={<LocalGroceryStoreIcon />}>
-      Add to Cart
+    <Button variant="contained" startIcon={<LocalGroceryStoreIcon />} onClick={onClick}>
+      {label}
     </Button>   
   );
 }

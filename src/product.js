@@ -15,6 +15,7 @@ import InfoIcon from '@mui/icons-material/Info';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Footer from './components/footer.jsx';
 
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
   ...theme.typography.body2,
@@ -110,7 +111,14 @@ const rows = [
   { id: 9, qty: '1', price: '$71', exp: '1 hour', from:'Madut' },
 ];
 
+
 export default function BasicGrid() {
+  const [cartCount, setCartCount] = React.useState(0);
+
+    const handleAddToCart = () => {
+        setCartCount(cartCount + 1);
+    };
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
@@ -138,9 +146,10 @@ export default function BasicGrid() {
           <Text texttitle={<h1>NFT #12092</h1>} icon={<LocalFireDepartmentIcon/>} content={info}/>
           </Item>
           <Item>
+            
             <div>
                 <Stack direction="row" spacing={2} >
-                    <CartButton />
+                <CartButton onClick={handleAddToCart} label={`Add to cart (${cartCount})`} />
                     <OfferButton />
                     <BuyButton />
                 </Stack>
