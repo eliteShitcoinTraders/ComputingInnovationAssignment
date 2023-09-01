@@ -5,13 +5,13 @@ import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
 import OptionBars from './components/OptionBar.js';
-import {Link} from 'react-router-dom';
 import ImageSlider from './components/imgslider.js';
 import Itemcard from './components/itemcard.js';
 import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
 import NotableRow from './components/notableRow.jsx';
 import FooterMain from './components/footer.jsx';
+
 
 
 import './components/css/itemcard.css';
@@ -71,6 +71,7 @@ const containerStyles = {
         fontWeight:"700"
     };
 export default function BasicGrid() {
+
     const [result, setResults] = React.useState([]);
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -110,13 +111,13 @@ export default function BasicGrid() {
                     <Item>
                         {/*                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />*/}
                         <hr></hr>
+                        
                         <Itemcard NftData={NftData} />
+                        
 
                     </Item>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
-                    <Item><Link to="/product">Grid 2</Link></Item>
-                </Grid>
+            
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
                         <div

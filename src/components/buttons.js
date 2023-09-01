@@ -1,14 +1,12 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 
-export default function CartButton() {
+export default function Buttons({label, onClick, icon}) {
   return (
-    <Button variant="contained" startIcon={<LocalGroceryStoreIcon />}>
-      Add to Cart
+    <Button variant="contained" startIcon={icon} onClick={onClick}>
+      {label}
     </Button>   
   );
 }
@@ -21,10 +19,3 @@ export function OfferButton() {
     );
   }
 
-  export  function BuyButton() {
-    return (
-      <Button variant="contained" startIcon={<MonetizationOnIcon/>}>
-        Buy
-      </Button>     
-    );
-  }

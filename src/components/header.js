@@ -12,6 +12,7 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SavingsIcon from '@mui/icons-material/Savings';
+//import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];
 const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
@@ -34,6 +35,7 @@ function ResponsiveAppBar() {
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
 
     return (
         <AppBar position="static">
@@ -129,6 +131,7 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
+                        
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
@@ -155,7 +158,7 @@ function ResponsiveAppBar() {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
-                        </Menu>
+                        </Menu>                        
                     </Box>
                 </Toolbar>
             </Container>

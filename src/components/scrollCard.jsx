@@ -4,6 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 
 export default function ActionAreaCard({ cardinfo }) {
@@ -21,15 +22,19 @@ export default function ActionAreaCard({ cardinfo }) {
     const mediaStyle = {
         height: '250px', // Set a fixed height for the image
     };
-    return (
+    return (   
+        
+        
         <Card sx={cardStyle} >
             <CardActionArea>
+                <Link to="/product">
                 <CardMedia
                     {...mediaStyle}
                     component="img"
                     image={cardinfo.url}
                     alt="green iguana"
                 />
+                </Link>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
                         {cardinfo.name}
@@ -47,5 +52,7 @@ export default function ActionAreaCard({ cardinfo }) {
                 </CardContent>
             </CardActionArea>
         </Card>
+        
+        
     );
 }
