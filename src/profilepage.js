@@ -5,6 +5,8 @@ import profilePicture from './img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { Link } from 'react-router-dom';
+import NaviBar from './components/header.js';
 
 
 /*
@@ -21,14 +23,13 @@ function ProfilePage() {
   const pfpBackground = {
     //Change background image : 1.
     backgroundImage: `url(${wallpaper})`,
-    height: '42vh',
+    height: '100vh',
     backgroundPosition: 'center',
     backgroundSize: '100%',
     backgroundRepeat: "no-repeat",
   };
   //Change the inventory's styles.
   const inventoryBackground = {
-    backgroundColor: "#4169E1",
     padding: "2vh",
     display: "flex",
     alignItems: "center",
@@ -88,73 +89,74 @@ function ProfilePage() {
 
   return (
     <div>
-    <div className="fpInfoAndPic" style={pfpBackground}>
-      <div style={{
-        //Flexboxes the page and controls horizontal movement
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "20px"
-      }}>
-        {/*Profile Picture Div : 2. */}
-        <div className='ProfileImage'>
-          <img src={profilePicture} alt="Profile Picture" style={{
-            marginTop: "20px",
-            width: 200,
-            height: 200,
-            borderRadius: 200 / 2,
-            textAlign: "center",
-          }}></img>
-        </div>
-
-        {/*Profile Box Div : 3. */}
-        <div className='ProfileInfo'>
-          <Box sx={{
-            width: 200,
-            backgroundColor: 'primary.dark',
-            borderRadius: "10px",
-            opacity: [0.9],
-            textAlign: "center",
-            margin: "auto",
-          }}>
-            {/*Profile Text Typography */}
-            <Typography sx={{
-              color: 'white',
-              padding: "10px",
-              overflow: "hidden",
+        < NaviBar/>
+      <div className="fpInfoAndPic" style={pfpBackground}>
+        <div style={{
+          //Flexboxes the page and controls horizontal movement
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "20px"
+        }}>
+          {/*Profile Picture Div : 2. */}
+          <div className='ProfileImage'>
+            <img src={profilePicture} alt="Profile Picture" style={{
+              marginTop: "20px",
+              width: 200,
+              height: 200,
+              borderRadius: 200 / 2,
               textAlign: "center",
+            }}></img>
+          </div>
+
+          {/*Profile Box Div : 3. */}
+          <div className='ProfileInfo'>
+            <Box sx={{
+              width: 200,
+              backgroundColor: 'primary.dark',
+              borderRadius: "10px",
+              opacity: [0.9],
+              textAlign: "center",
+              margin: "auto",
             }}>
-              User: Henry Nguyen
-              Owns: **num** items
-            </Typography>
-          </Box>
+              {/*Profile Text Typography */}
+              <Typography sx={{
+                color: 'white',
+                padding: "10px",
+                overflow: "hidden",
+                textAlign: "center",
+              }}>
+                User: Henry Nguyen
+                Owns: **num** items
+              </Typography>
+            </Box>
+          </div>
+        </div>
+        {/* End of Div for Pfp and Box. */}
+
+        {/* Code for the line*/}
+        <hr style={{
+          border: '1px solid white',
+          borderRadius: '5',
+          width: '90%',
+          opacity: '0.7'
+        }}></hr>
+        {/* Image List : 4. */}
+        <div style={inventoryBackground}>
+          <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
+            {itemData.map((item) => (
+              <ImageListItem key={item.img}>
+                <img
+                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                  alt={item.title}
+                  loading="lazy"
+                />
+              </ImageListItem>
+            ))}
+          </ImageList>
         </div>
       </div>
-      {/* End of Div for Pfp and Box. */}
-
-      {/* Code for the line*/}
-      <hr style={{
-        border: '1px solid white',
-        borderRadius: '5',
-        width: '90%',
-        opacity: '0.7'
-        }}></hr>
-                {/* Image List : 4. */}
-      <div style={inventoryBackground}>
-      <ImageList sx={{ width: 800, height: 400, borderRadius: "10px"}} cols={3} rowHeight={164}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
-      </div>
-    </div>
     </div>
   );
 }

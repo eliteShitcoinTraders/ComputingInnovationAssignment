@@ -1,25 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Import necessary components from React Router
+// Imports the components from React Router
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import BasicGrid from './home.js';
-import Product from './product'; // Import the component for the product page
+import Product from './product';
 import Purchase from './purchase';
-//import Profile from './profilepage';
+import Profile from './profilepage';
 
 function App() {
     return (
         <div>
-            <Router>  
+            <Router>
                 <Routes>
-                    <Route path="/" element={<BasicGrid />} /> 
-                    <Route path="/product" element={<Product />} /> 
+                    <Route path="/" element={<BasicGrid />} />
+                    <Route path="/product" element={<Product />} />
                     <Route path="/purchase" element={<Purchase/>}/>
-                    
+                    <Route path="/profilepage" element={<Profile/>}/>
                 </Routes>
             </Router>
         </div>
     );
 }
 
-//<Route path="/profilepage" element={<Profile/>}/> -- route to profile page
+//
 
 export default App;
