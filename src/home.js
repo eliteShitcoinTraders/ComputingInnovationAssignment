@@ -64,8 +64,13 @@ const containerStyles = {
 };
 
 
+    const headerStyle = {
+        fontSize: "25px",
+        textAlign: "left",
+        marginLeft: "20px",
+        fontWeight:"700"
+    };
 export default function BasicGrid() {
-
     const [result, setResults] = React.useState([]);
     return (
         <Box sx={{ flexGrow: 1 }}>
@@ -115,12 +120,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
                         <div
-                            style={{
-                                fontSize: "15px",
-                                textAlign: "left",
-                                marginLeft:"20px"
-
-                            }}
+                            style={headerStyle}
                         >Notable Collection</div>
                     </Item>
                 </Grid>
@@ -132,12 +132,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
                         <div
-                            style={{
-                                fontSize: "15px",
-                                textAlign: "left",
-                                marginLeft: "20px"
-
-                            }}
+                            style={headerStyle}
                         >Top Collector Buys Today</div>
                     </Item>
                 </Grid>
@@ -149,12 +144,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
                         <div
-                            style={{
-                                fontSize: "15px",
-                                textAlign: "left",
-                                marginLeft: "20px"
-
-                            }}
+                            style={headerStyle}
                         >Trending in Art</div>
                     </Item>
                 </Grid>
