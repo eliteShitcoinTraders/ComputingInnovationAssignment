@@ -4,7 +4,7 @@ import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
-import CartButton, { BuyButton, OfferButton } from './components/buttons.js';
+import Buttons, {OfferButton } from './components/buttons.js';
 import Stack from '@mui/material/Stack';
 import DataGridDemo from './components/datagrid.js';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -14,6 +14,9 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import InfoIcon from '@mui/icons-material/Info';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Footer from './components/footer.jsx';
+import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import { Link } from 'react-router-dom';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -115,9 +118,9 @@ const rows = [
 export default function BasicGrid() {
   const [cartCount, setCartCount] = React.useState(0);
 
-    const handleAddToCart = () => {
-        setCartCount(cartCount + 1);
-    };
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -149,9 +152,11 @@ export default function BasicGrid() {
             
             <div>
                 <Stack direction="row" spacing={2} >
-                <CartButton onClick={handleAddToCart} label={`Add to cart (${cartCount})`} />
-                    <OfferButton />
-                    <BuyButton />
+                  <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
+                  <OfferButton />
+                  <Link to="/purchase">
+                  <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/>
+                  </Link>
                 </Stack>
             </div>
           </Item>
