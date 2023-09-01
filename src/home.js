@@ -14,6 +14,7 @@ import NotableRow from './components/notableRow.jsx';
 import FooterMain from './components/footer.jsx';
 
 
+
 import './components/css/itemcard.css';
 
 

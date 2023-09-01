@@ -9,6 +9,10 @@ import { Text } from './components/textbox.js';
 import Buttons from './components/buttons.js';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Inputs from './components/inputfield.js';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -26,8 +30,18 @@ const content = (
 );
 
 export default function AutoGrid() {
-  return (
+  const [open, setOpen] = React.useState(false);
 
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  return (
+    
     <Box sx={{ flexGrow: 1 }}>
       <Grid item xs={12} sm={12} md={12}>
           <Item><NaviBar/> </Item>
@@ -41,8 +55,23 @@ export default function AutoGrid() {
           <h1>Checkout</h1>
             <Text texttitle={<h2>Subtotal: $5,000</h2>} content={content}/>
             <Inputs/>
-            <Buttons icon={<MonetizationOnIcon/>} label={"BUY"} />
+            <Buttons icon={<MonetizationOnIcon/>} onClick={handleClickOpen} label={"BUY"} />
 
+            <div>
+            <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alertmsg"
+            >
+              <DialogTitle id="alertmsg">
+              {"Purchase Sent."}
+              </DialogTitle>
+              <DialogActions>            
+                <Button onClick={handleClose}>Close</Button>
+              </DialogActions>
+            </Dialog>
+            </div>
+            
           </Item>
         </Grid>
        
@@ -53,4 +82,6 @@ export default function AutoGrid() {
       </Grid>
     </Box>
   );
+
+  
 }
