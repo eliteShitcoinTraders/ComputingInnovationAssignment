@@ -25,7 +25,7 @@ function ProfilePage() {
   const pfpBackground = {
     //Change background image : 1.
     backgroundImage: `url(${wallpaper})`,
-    height: '100%',
+    height: '100vh',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
