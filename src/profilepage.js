@@ -1,13 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import wallpaper from './img/wallpaper.jpg';
 import profilePicture from './img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Link } from 'react-router-dom';
 import NaviBar from './components/header.js';
-
+import Grid from '@mui/material/Grid';
+import TransacCard from './components/transactioncard';
+import { Item, NftData } from './home.js'
 
 /*
 Unsure about in-line references. But, just in case I forget to ask on Tuesday:
@@ -16,6 +17,7 @@ E.g. App from **url**
 2. Circle Pfp from https://www.youtube.com/watch?v=xBDa6OzbF3o&ab_channel=LirsTechTips
 3. Profile Box from https://mui.com/material-ui/react-box/
 4. ImageList from https://mui.com/material-ui/react-image-list/#system-StandardImageList.js
+5. Toggle from https://www.youtube.com/watch?v=5CTFTDpHHto&t=402s&ab_channel=TheCodeAngle
 */
 
 function ProfilePage() {
@@ -23,9 +25,9 @@ function ProfilePage() {
   const pfpBackground = {
     //Change background image : 1.
     backgroundImage: `url(${wallpaper})`,
-    height: '100vh',
+    height: '100%',
     backgroundPosition: 'center',
-    backgroundSize: '100%',
+    backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
   };
   //Change the inventory's styles.
@@ -35,6 +37,9 @@ function ProfilePage() {
     alignItems: "center",
     justifyContent: "center",
   };
+  //Toggle button 5.
+  const [toggle, setToggle] = useState(true)
+  const ButtonText = toggle ? "Inventory" : "Transaction History";
 
   const itemData = [
     {
@@ -88,9 +93,9 @@ function ProfilePage() {
   ];
 
   return (
-    <div>
-        < NaviBar/>
-      <div className="fpInfoAndPic" style={pfpBackground}>
+    <div style={pfpBackground}>
+      < NaviBar />
+      <div className="fpInfoAndPic">
         <div style={{
           //Flexboxes the page and controls horizontal movement
           display: "flex",
@@ -131,9 +136,10 @@ function ProfilePage() {
               </Typography>
             </Box>
           </div>
+          {/* Button to toggle Divs*/}
+          <button onClick={() => setToggle(!toggle)} className="btn-toggle">{ButtonText}</button>
         </div>
         {/* End of Div for Pfp and Box. */}
-
         {/* Code for the line*/}
         <hr style={{
           border: '1px solid white',
@@ -141,26 +147,52 @@ function ProfilePage() {
           width: '90%',
           opacity: '0.7'
         }}></hr>
-        {/* Image List : 4. */}
+
         <div style={inventoryBackground}>
-          <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
-            {itemData.map((item) => (
-              <ImageListItem key={item.img}>
-                <img
-                  src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                  srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                  alt={item.title}
-                  loading="lazy"
-                />
-              </ImageListItem>
-            ))}
-          </ImageList>
+          {/*Uses the useState hook*/}
+          {/* Image List w/ Toggle Feature : 4. */}
+          {toggle && (
+            <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
+              {itemData.map((item) => (
+                <ImageListItem key={item.img}>
+                  <img
+                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          )}
+          {/* Transaction History*/}
+          <div style={inventoryBackground}>
+            {!toggle && (
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                padding="0"
+                container spacing={1}
+                style={{
+                  overflow: "auto",
+                  maxHeight: "50vh",
+                }}>
+                <Grid item xs={12} sm={12} md={12}>
+                  <Item>
+                    <TransacCard NftData={NftData} />
+                  </Item>
+                </Grid>
+              </Grid>
+            )}
+          </div>
         </div>
+        {/*End of Divs for the Inventory and Image*/}
       </div>
     </div>
   );
 }
 
 export default ProfilePage;
-
 

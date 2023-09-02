@@ -65,10 +65,10 @@ const ItemCard = ({ NftData }) => {
                             <h3 style={headerStyle}>{item.name}</h3>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.priceFloor}ETH</h4>
+                            <h4>{item.paymentInfo}ETH</h4>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.volume}ETH</h4>
+                            <h4>{item.transactionDate}DATE</h4>
                         </div>
                     </div>
 
