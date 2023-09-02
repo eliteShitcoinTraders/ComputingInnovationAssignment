@@ -5,7 +5,7 @@ import BasicGrid from './home.js';
 import Product from './product';
 import Purchase from './purchase';
 import Profile from './profilepage';
-
+//React Router was used to route the pages together.
 function App() {
     return (
         <div>

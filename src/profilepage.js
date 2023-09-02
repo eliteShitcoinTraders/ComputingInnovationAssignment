@@ -23,7 +23,7 @@ E.g. App from **url**
 function ProfilePage() {
   //Change the styles of the page.
   const pfpBackground = {
-    //Change background image : 1.
+    //Change background image || Reference 1.
     backgroundImage: `url(${wallpaper})`,
     height: '100vh',
     backgroundPosition: 'center',
@@ -37,7 +37,7 @@ function ProfilePage() {
     alignItems: "center",
     justifyContent: "center",
   };
-  //Toggle button 5.
+  //Toggle button || Reference 5.
   const [toggle, setToggle] = useState(true)
   const ButtonText = toggle ? "Inventory" : "Transaction History";
 
@@ -103,7 +103,7 @@ function ProfilePage() {
           alignItems: "center",
           gap: "20px"
         }}>
-          {/*Profile Picture Div : 2. */}
+          {/*Profile Picture Div || Reference 2. */}
           <div className='ProfileImage'>
             <img src={profilePicture} alt="Profile Picture" style={{
               marginTop: "20px",
@@ -114,7 +114,7 @@ function ProfilePage() {
             }}></img>
           </div>
 
-          {/*Profile Box Div : 3. */}
+          {/*Profile Box Div || Reference 3. */}
           <div className='ProfileInfo'>
             <Box sx={{
               width: 200,
@@ -150,7 +150,7 @@ function ProfilePage() {
 
         <div style={inventoryBackground}>
           {/*Uses the useState hook*/}
-          {/* Image List w/ Toggle Feature : 4. */}
+          {/* Image List w/ Toggle Feature || Reference 4. */}
           {toggle && (
             <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
               {itemData.map((item) => (
@@ -174,7 +174,7 @@ function ProfilePage() {
                 justifyContent="center"
                 alignItems="center"
                 padding="0"
-                container spacing={1}
+                containerSpacing={1}
                 style={{
                   overflow: "auto",
                   maxHeight: "50vh",
