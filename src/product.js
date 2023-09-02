@@ -128,7 +128,7 @@ export default function BasicGrid() {
       <Grid container spacing={2}>
 
         <Grid item xs={12} sm={12} md={12}>
-          <Item><NaviBar /></Item>
+          <NaviBar />
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
@@ -165,8 +165,8 @@ export default function BasicGrid() {
           <Item>  
             <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162}/>} icon={<GavelIcon/>} heading={"Listings"}/>      
           </Item>
-          <Item>
-            <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350}/>} icon={<FormatListBulletedIcon />} heading={"Offers"}/>
+                  <Item>
+                      <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />
           </Item>
           </Grid>
 

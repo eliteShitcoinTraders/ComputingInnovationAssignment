@@ -25,10 +25,10 @@ const ItemCard = ({ NftData }) => {
     });
 
     const imageStyle = {
-        width: "100px",
-        height: "100px",
-        borderRadius: "4px",
-        marginRight: "40px", // Add spacing between image and content
+        width: "90px",
+        height: "90px",
+        borderRadius: "15px",
+        marginRight: "20px", // Add spacing between image and content
     };
 
     const contentStyle = {
@@ -40,9 +40,13 @@ const ItemCard = ({ NftData }) => {
     };
 
     const headerStyle = {
-        color: "",
         letterSpacing: ".05rem",
-        fontWeight: "bold",
+        fontWeight: "600",
+    };
+    const NumStyle = {
+        letterSpacing: ".05rem",
+        fontWeight: "600",
+        marginRight: "40px",
     };
 
     return (
@@ -58,17 +62,21 @@ const ItemCard = ({ NftData }) => {
                         style={gridItemStyle(index)}
                         onMouseEnter={() => setHoveredIndex(index)}
                         onMouseLeave={() => setHoveredIndex(null)}
-                    >   <Link to="/product">
+                    >
+                        <div style={NumStyle}>
+                            <h3 style={headerStyle}>{item.rank}</h3>
+                        </div>
+                        <Link to="/product">
                         <img src={item.url} alt={item.name} style={imageStyle} />
                         </Link>
                         <div style={contentStyle}>
                             <h3 style={headerStyle}>{item.name}</h3>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.priceFloor}ETH</h4>
+                            <h4 style={headerStyle}>{item.priceFloor}ETH</h4>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.volume}ETH</h4>
+                            <h4 style={headerStyle}>{item.volume}ETH</h4>
                         </div>
                     </div>
 

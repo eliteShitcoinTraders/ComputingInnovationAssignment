@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,9 +15,10 @@ import SavingsIcon from '@mui/icons-material/Savings';
 import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];
+const settings = ['Settings', 'Profile', 'Logout']; // Define your settings here
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -29,7 +30,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 function ResponsiveAppBar() {
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const [anchorElNav, setAnchorElNav] = useState(null);
+    const [anchorElUser, setAnchorElUser] = useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -39,17 +41,24 @@ function ResponsiveAppBar() {
         setAnchorElNav(null);
     };
 
+    const handleOpenUserMenu = (event) => {
+        setAnchorElUser(event.currentTarget);
+    };
+
+    const handleCloseUserMenu = () => {
+        setAnchorElUser(null);
+    };
+
     return (
         <AppBar position="static">
             <Container maxWidth="xl">
                 <Toolbar disableGutters>
                     <SavingsIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-                    {/*this is for when the screen is full*/}
                     <Typography
                         variant="h6"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={Link}
+                        to="/"
                         sx={{
                             mr: 10,
                             display: { xs: 'none', md: 'flex' },
@@ -73,7 +82,6 @@ function ResponsiveAppBar() {
                             color="inherit"
                         >
                             <MenuIcon />
-
                         </IconButton>
                         <Menu
                             id="menu-appbar"
@@ -105,8 +113,8 @@ function ResponsiveAppBar() {
                     <Typography
                         variant="h5"
                         noWrap
-                        component="a"
-                        href="/"
+                        component={Link}
+                        to="/"
                         sx={{
                             mr: 2,
                             display: { xs: 'flex', md: 'none' },
@@ -133,20 +141,18 @@ function ResponsiveAppBar() {
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        
                         <Tooltip title="Open profile">
-                        <Link to="/profilepage">
-                            <IconButton sx={{ p: 0 }}>
+                            <Link to="/profilepage">
+                            <IconButton sx={{ p: 0 }} onClick={handleOpenUserMenu}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
-                            </IconButton>
-                            <IconButton aria-label="cart">
-                                <StyledBadge badgeContent={4} color="secondary">
-                                    <ShoppingCartIcon style={{
-                                        color:"snowwhite"
-                                    }} />
-                                </StyledBadge>
-                            </IconButton>
+                                </IconButton>
+                            </Link>
                         </Tooltip>
+                        <IconButton aria-label="cart" style={{ marginLeft:"25px" }}>
+                            <StyledBadge badgeContent={4} color="secondary">
+                                <ShoppingCartIcon style={{ color: "white" }} />
+                            </StyledBadge>
+                        </IconButton>
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
@@ -168,11 +174,12 @@ function ResponsiveAppBar() {
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
                             ))}
-                        </Menu>                        
+                        </Menu>
                     </Box>
                 </Toolbar>
             </Container>
         </AppBar>
     );
 }
+
 export default ResponsiveAppBar;

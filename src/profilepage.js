@@ -105,13 +105,13 @@ function ProfilePage() {
         }}>
           {/*Profile Picture Div || Reference 2. */}
           <div className='ProfileImage'>
-            <img src={profilePicture} alt="Profile Picture" style={{
-              marginTop: "20px",
-              width: 200,
-              height: 200,
-              borderRadius: 200 / 2,
-              textAlign: "center",
-            }}></img>
+                      <img src={profilePicture} alt="" style={{
+                          marginTop: "20px",
+                          width: 200,
+                          height: 200,
+                          borderRadius: 200 / 2,
+                          textAlign: "center",
+                      }}></img>
           </div>
 
           {/*Profile Box Div || Reference 3. */}

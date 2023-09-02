@@ -7,7 +7,7 @@ import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 
-export default function ActionAreaCard({ cardinfo }) {
+export default function ActionAreaCard({ cardinfo, header }) {
     const Pricedisplay = {
         display: 'flex', // Use flexbox to arrange items horizontally
         justifyContent: 'space-between', // Add space between the items
@@ -15,7 +15,7 @@ export default function ActionAreaCard({ cardinfo }) {
     };
 
     const cardStyle = {
-        width: '380px', // Set the desired fixed width
+        width: '55%', // Set the desired fixed width
         margin: '.5%',
     };
 
@@ -23,8 +23,6 @@ export default function ActionAreaCard({ cardinfo }) {
         height: '250px', // Set a fixed height for the image
     };
     return (   
-        
-        
         <Card sx={cardStyle} >
             <CardActionArea>
                 <Link to="/product">
@@ -41,12 +39,12 @@ export default function ActionAreaCard({ cardinfo }) {
                     </Typography>
                     <div style={Pricedisplay}>
                         <Typography variant="body2" color="text.secondary" >
-                            <h4>Floor Price</h4>
-                            {cardinfo.priceFloor}
+                            <h4>{header.headerOne}</h4>
+                            {cardinfo.priceFloor}ETH
                         </Typography>
                         <Typography variant="body2" color="text.secondary" >
-                            <h4>Volume</h4>
-                            {cardinfo.volume}
+                            <h4>{header.headerTwo}</h4>
+                            {cardinfo.volume}ETH
                         </Typography>
                     </div>
                 </CardContent>
