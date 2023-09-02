@@ -12,10 +12,10 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import SavingsIcon from '@mui/icons-material/Savings';
-//import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+const settings = [<Link to="/profilepage">Profile</Link>, 'Account', 'Dashboard', 'Logout'];
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);

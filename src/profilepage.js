@@ -5,7 +5,6 @@ import profilePicture from './img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-import { Link } from 'react-router-dom';
 import NaviBar from './components/header.js';
 
 
