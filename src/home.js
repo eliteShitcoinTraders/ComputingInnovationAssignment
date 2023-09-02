@@ -11,9 +11,6 @@ import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
 import NotableRow from './components/notableRow.jsx';
 import FooterMain from './components/footer.jsx';
-
-
-
 import './components/css/itemcard.css';
 
 
@@ -111,13 +108,13 @@ export default function BasicGrid() {
                     <Item>
                         {/*                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />*/}
                         <hr></hr>
-                        
+
                         <Itemcard NftData={NftData} />
-                        
+
 
                     </Item>
                 </Grid>
-            
+
                 <Grid item xs={12} sm={6} md={4}>
                     <Item>
                         <div
@@ -158,9 +155,11 @@ export default function BasicGrid() {
                     <Item>
                         <FooterMain />
                     </Item>
-                </Grid> 
+                </Grid>
             </Grid>
         </Box>
 
     );
 }
+
+export {Item, NftData};

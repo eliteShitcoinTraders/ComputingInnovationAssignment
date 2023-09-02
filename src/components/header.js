@@ -18,7 +18,6 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 //import { Link } from 'react-router-dom';
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -31,23 +30,14 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 
 function ResponsiveAppBar() {
     const [anchorElNav, setAnchorElNav] = React.useState(null);
-    const [anchorElUser, setAnchorElUser] = React.useState(null);
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
-    };
-    const handleOpenUserMenu = (event) => {
-        setAnchorElUser(event.currentTarget);
     };
 
     const handleCloseNavMenu = () => {
         setAnchorElNav(null);
     };
-
-    const handleCloseUserMenu = () => {
-        setAnchorElUser(null);
-    };
-
 
     return (
         <AppBar position="static">
@@ -144,8 +134,9 @@ function ResponsiveAppBar() {
 
                     <Box sx={{ flexGrow: 0 }}>
                         
-                        <Tooltip title="Open settings">
-                            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+                        <Tooltip title="Open profile">
+                        <Link to="/profilepage">
+                            <IconButton sx={{ p: 0 }}>
                                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
                             </IconButton>
                             <IconButton aria-label="cart">

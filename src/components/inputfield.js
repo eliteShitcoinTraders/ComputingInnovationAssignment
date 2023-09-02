@@ -38,7 +38,7 @@ export default function Inputs() {
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       <div>
       <FormControl sx={{ m: 1, width: '30ch'}} variant="standard">
-          <InputLabel htmlFor="username">Username:</InputLabel>
+          <InputLabel htmlFor="username">Username</InputLabel>
           <Input
             id="username"
           />

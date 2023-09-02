@@ -1,11 +1,14 @@
-import * as React from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import wallpaper from './img/wallpaper.jpg';
 import profilePicture from './img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
-
+import NaviBar from './components/header.js';
+import Grid from '@mui/material/Grid';
+import TransacCard from './components/transactioncard';
+import { Item, NftData } from './home.js'
 
 /*
 Unsure about in-line references. But, just in case I forget to ask on Tuesday:
@@ -14,26 +17,29 @@ E.g. App from **url**
 2. Circle Pfp from https://www.youtube.com/watch?v=xBDa6OzbF3o&ab_channel=LirsTechTips
 3. Profile Box from https://mui.com/material-ui/react-box/
 4. ImageList from https://mui.com/material-ui/react-image-list/#system-StandardImageList.js
+5. Toggle from https://www.youtube.com/watch?v=5CTFTDpHHto&t=402s&ab_channel=TheCodeAngle
 */
 
 function ProfilePage() {
   //Change the styles of the page.
   const pfpBackground = {
-    //Change background image : 1.
+    //Change background image || Reference 1.
     backgroundImage: `url(${wallpaper})`,
-    height: '42vh',
+    height: '100vh',
     backgroundPosition: 'center',
-    backgroundSize: '100%',
+    backgroundSize: 'cover',
     backgroundRepeat: "no-repeat",
   };
   //Change the inventory's styles.
   const inventoryBackground = {
-    backgroundColor: "#4169E1",
     padding: "2vh",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
   };
+  //Toggle button || Reference 5.
+  const [toggle, setToggle] = useState(true)
+  const ButtonText = toggle ? "Inventory" : "Transaction History";
 
   const itemData = [
     {
@@ -87,78 +93,106 @@ function ProfilePage() {
   ];
 
   return (
-    <div>
-    <div className="fpInfoAndPic" style={pfpBackground}>
-      <div style={{
-        //Flexboxes the page and controls horizontal movement
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: "20px"
-      }}>
-        {/*Profile Picture Div : 2. */}
-        <div className='ProfileImage'>
-          <img src={profilePicture} alt="Profile Picture" style={{
-            marginTop: "20px",
-            width: 200,
-            height: 200,
-            borderRadius: 200 / 2,
-            textAlign: "center",
-          }}></img>
-        </div>
-
-        {/*Profile Box Div : 3. */}
-        <div className='ProfileInfo'>
-          <Box sx={{
-            width: 200,
-            backgroundColor: 'primary.dark',
-            borderRadius: "10px",
-            opacity: [0.9],
-            textAlign: "center",
-            margin: "auto",
-          }}>
-            {/*Profile Text Typography */}
-            <Typography sx={{
-              color: 'white',
-              padding: "10px",
-              overflow: "hidden",
+    <div style={pfpBackground}>
+      < NaviBar />
+      <div className="fpInfoAndPic">
+        <div style={{
+          //Flexboxes the page and controls horizontal movement
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "20px"
+        }}>
+          {/*Profile Picture Div || Reference 2. */}
+          <div className='ProfileImage'>
+            <img src={profilePicture} alt="Profile Picture" style={{
+              marginTop: "20px",
+              width: 200,
+              height: 200,
+              borderRadius: 200 / 2,
               textAlign: "center",
-            }}>
-              User: Henry Nguyen
-              Owns: **num** items
-            </Typography>
-          </Box>
-        </div>
-      </div>
-      {/* End of Div for Pfp and Box. */}
+            }}></img>
+          </div>
 
-      {/* Code for the line*/}
-      <hr style={{
-        border: '1px solid white',
-        borderRadius: '5',
-        width: '90%',
-        opacity: '0.7'
+          {/*Profile Box Div || Reference 3. */}
+          <div className='ProfileInfo'>
+            <Box sx={{
+              width: 200,
+              backgroundColor: 'primary.dark',
+              borderRadius: "10px",
+              opacity: [0.9],
+              textAlign: "center",
+              margin: "auto",
+            }}>
+              {/*Profile Text Typography */}
+              <Typography sx={{
+                color: 'white',
+                padding: "10px",
+                overflow: "hidden",
+                textAlign: "center",
+              }}>
+                User: Henry Nguyen
+                Owns: **num** items
+              </Typography>
+            </Box>
+          </div>
+          {/* Button to toggle Divs*/}
+          <button onClick={() => setToggle(!toggle)} className="btn-toggle">{ButtonText}</button>
+        </div>
+        {/* End of Div for Pfp and Box. */}
+        {/* Code for the line*/}
+        <hr style={{
+          border: '1px solid white',
+          borderRadius: '5',
+          width: '90%',
+          opacity: '0.7'
         }}></hr>
-                {/* Image List : 4. */}
-      <div style={inventoryBackground}>
-      <ImageList sx={{ width: 800, height: 400, borderRadius: "10px"}} cols={3} rowHeight={164}>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
-          <img
-            src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-            srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-            alt={item.title}
-            loading="lazy"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+
+        <div style={inventoryBackground}>
+          {/*Uses the useState hook*/}
+          {/* Image List w/ Toggle Feature || Reference 4. */}
+          {toggle && (
+            <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
+              {itemData.map((item) => (
+                <ImageListItem key={item.img}>
+                  <img
+                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
+                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
+                    alt={item.title}
+                    loading="lazy"
+                  />
+                </ImageListItem>
+              ))}
+            </ImageList>
+          )}
+          {/* Transaction History*/}
+          <div style={inventoryBackground}>
+            {!toggle && (
+              <Grid
+                container
+                direction="row"
+                justifyContent="center"
+                alignItems="center"
+                padding="0"
+                containerSpacing={1}
+                style={{
+                  overflow: "auto",
+                  maxHeight: "50vh",
+                }}>
+                <Grid item xs={12} sm={12} md={12}>
+                  <Item>
+                    <TransacCard NftData={NftData} />
+                  </Item>
+                </Grid>
+              </Grid>
+            )}
+          </div>
+        </div>
+        {/*End of Divs for the Inventory and Image*/}
       </div>
-    </div>
     </div>
   );
 }
 
 export default ProfilePage;
-
 
