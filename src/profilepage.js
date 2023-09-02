@@ -9,6 +9,7 @@ import NaviBar from './components/header.js';
 import Grid from '@mui/material/Grid';
 import TransacCard from './components/transactioncard';
 import { Item, NftData } from './home.js'
+import Footer from './components/footer.jsx';
 
 /*
 Unsure about in-line references. But, just in case I forget to ask on Tuesday:
@@ -24,15 +25,12 @@ function ProfilePage() {
   //Change the styles of the page.
   const pfpBackground = {
     //Change background image || Reference 1.
-    backgroundImage: `url(${wallpaper})`,
-    height: '100vh',
-    backgroundPosition: 'center',
-    backgroundSize: 'cover',
-    backgroundRepeat: "no-repeat",
+    backgroundColor: "#F5F5F5",
+    height: '20%',
   };
   //Change the inventory's styles.
   const inventoryBackground = {
-    padding: "2vh",
+    backgroundColor: "white",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -142,11 +140,13 @@ function ProfilePage() {
         {/* End of Div for Pfp and Box. */}
         {/* Code for the line*/}
         <hr style={{
-          border: '1px solid white',
-          borderRadius: '5',
+          border: '1px solid',
+          color: "#F5F5F5",
+          borderRadius: '10',
           width: '90%',
           opacity: '0.7'
         }}></hr>
+        </div>
 
         <div style={inventoryBackground}>
           {/*Uses the useState hook*/}
@@ -186,13 +186,14 @@ function ProfilePage() {
                 </Grid>
               </Grid>
             )}
-          </div>
+        </div>
         </div>
         {/*End of Divs for the Inventory and Image*/}
-      </div>
+      <Item><Footer/></Item>
     </div>
   );
 }
 
 export default ProfilePage;
 
+{}
