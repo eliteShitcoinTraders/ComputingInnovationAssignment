@@ -64,7 +64,7 @@ export default function AutoGrid() {
             aria-labelledby="alertmsg"
             >
               <DialogTitle id="alertmsg">
-              {"Purchase Sent."}
+              {"Purchase Processed."}
               </DialogTitle>
               <DialogActions>            
                 <Button onClick={handleClose}>Close</Button>
