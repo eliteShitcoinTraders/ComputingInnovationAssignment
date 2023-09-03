@@ -12,4 +12,3 @@ export default function DataGridDemo({ columns, rows, pageSize, height }) {/* MU
             <DataGrid rows={rows} columns={columns} initialState={{ pagination: { paginationModel: { pageSize: pageSize } } }} />
         </Box>
     );
-}

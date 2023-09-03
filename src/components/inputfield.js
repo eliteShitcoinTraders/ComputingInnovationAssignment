@@ -18,15 +18,15 @@ import MenuItem from '@mui/material/MenuItem';
 const currencies = [
     {
       value: 'USD',
-      label: '$ - USD',
+      label: 'ETH',
     },
     {
       value: 'BTC',
-      label: '฿ - BTC',
+      label: 'BTC',
     },
     {
       value: 'AUD',
-      label: '$ - AUD',
+      label: 'AUD',
     },
   ];
 
