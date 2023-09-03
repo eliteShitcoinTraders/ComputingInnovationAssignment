@@ -41,13 +41,13 @@ const content = (
     providing enthusiasts with well thought out and creative pieces.
     `}
   </div>
-);
+);// content description
 
 const info = (
   <div style={{ textAlign: 'left' }}>
   Collection: 'cool' <br/> Product by: nftcreater <br/> Owned by: nfttrader123 
 </div>
-);
+); // nft info and number
 
 const Image = styled('img')({
   width: '100%',
@@ -104,11 +104,11 @@ const col2 = [
     type: 'number',
     width: 150,   
   },
-];
+]; //colmun headings
 
 const rows2 = [
   { id: 1, qty: '12', price: '$10', exp: '10 hours', from:'nfttrader123' },
-]
+] //grid data for listings
 
 const rows = [
   { id: 1, qty: '12', price: '$10', exp: '10 hours', from:'Joe' },
@@ -119,7 +119,7 @@ const rows = [
   { id: 7, qty: '8', price: '$29', exp: '15 days', from:'SOE' },
   { id: 8, qty: '5', price: '$98', exp: '13 hours', from:'Moey' },
   { id: 9, qty: '1', price: '$71', exp: '1 hour', from:'Madut' },
-];
+];//grid data for offers
 
 
 export default function BasicGrid() {
@@ -148,7 +148,7 @@ export default function BasicGrid() {
             </div>
           </Item>
           <Item>
-                      <Text texttitle={<h3>Description</h3>} icon={<InfoIcon />} content={content} />{ /*print description*/}
+            <Text texttitle={<h3>Description</h3>} icon={<InfoIcon />} content={content} />{ /*print description*/}
           </Item>
         </Grid>
 
@@ -160,21 +160,21 @@ export default function BasicGrid() {
             
             <div>
                 <Stack direction="row" spacing={2} >
-                              <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
-                              <Buttons icon={<LocalOfferIcon />} label={"Offer"} />
+                  <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
+                  <Buttons icon={<LocalOfferIcon />} label={"Offer"} />
 
                   <Link to="/purchase">
-                  <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/>
+                  <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/> {/*buy button */}
                   </Link>
                   
                 </Stack>
             </div>
           </Item>
           <Item>  
-                      <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162} />} icon={<GavelIcon />} heading={"Listings"} />      { /*print listing table*/}
+            <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162} />} icon={<GavelIcon />} heading={"Listings"} />      { /*print listing table*/}
           </Item>
-                  <Item>
-                      <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />{ /*print offering table*/}
+          <Item>
+            <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />{ /*print offering table*/}
           </Item>
           </Grid>
 

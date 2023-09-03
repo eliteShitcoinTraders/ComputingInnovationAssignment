@@ -11,10 +11,10 @@ import Collapse from '@mui/material/Collapse';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 
-export default function NestedList({datagrid, icon, heading}) /*MUI NestedList*/
+export default function NestedList({datagrid, icon, heading}) //accepts datagrid icon and heading=(string))
 {
   const [open, setOpen] = React.useState(true);
-  const handleClick = () => 
+  const handleClick = () => //function when user clicks on button is pressed changes state
   {
     setOpen(!open);
   };
@@ -29,7 +29,7 @@ export default function NestedList({datagrid, icon, heading}) /*MUI NestedList*/
       }
       component="nav">
            
-      <ListItemButton onClick={handleClick}>
+      <ListItemButton onClick={handleClick}> {/*calls handleclick function */}
         <ListItemIcon>
           {icon}
         </ListItemIcon>
@@ -42,7 +42,7 @@ export default function NestedList({datagrid, icon, heading}) /*MUI NestedList*/
       <Collapse in={open} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
           <ListItemButton sx={{ pl: 4 }}>
-            {datagrid}     
+            {datagrid}     {/*accepts a datagrid to be displayed when list is dropped*/}
           </ListItemButton>
         </List>
       </Collapse>
