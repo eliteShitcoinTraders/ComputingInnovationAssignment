@@ -12,5 +12,6 @@ export default function Buttons({ label, onClick, icon }) {
             {label}
         </Button>
     );
+}
 
 

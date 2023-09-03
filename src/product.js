@@ -21,7 +21,9 @@ import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+
 import { Link } from 'react-router-dom';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -31,7 +33,7 @@ const Item = styled(Paper)(({ theme }) => ({
   textAlign: 'center',
   color: theme.palette.text.secondary,
 }));
-//variable that stores string for when textbox component is called
+
 const content = (
   <div style={{textAlign:'left'}}>
     {`This collectable nft created nftcreator is a part of 
@@ -40,22 +42,20 @@ const content = (
     `}
   </div>
 );
-//variable for textbox component that is printed on screen
+
 const info = (
   <div style={{ textAlign: 'left' }}>
   Collection: 'cool' <br/> Product by: nftcreater <br/> Owned by: nfttrader123 
 </div>
 );
 
-//nft image size and fit
 const Image = styled('img')({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
   borderRadius: '6px', 
 });
-
-// datagrid column headings for offers
+//column and row desc
 const columns = [  
   {
     field: 'price',
@@ -80,7 +80,7 @@ const columns = [
     width: 150,  
   },
 ];
-//datagrid data headings for listings
+
 const col2 = [
   {
     field: 'price',
@@ -106,11 +106,10 @@ const col2 = [
   },
 ];
 
-//data in datagrid for listings
 const rows2 = [
   { id: 1, qty: '12', price: '$10', exp: '10 hours', from:'nfttrader123' },
 ]
-//datagrid offers data inputs
+
 const rows = [
   { id: 1, qty: '12', price: '$10', exp: '10 hours', from:'Joe' },
   { id: 2, qty: '2', price: '$21', exp: '4 days', from:'Smoe1' },
@@ -126,17 +125,16 @@ const rows = [
 export default function BasicGrid() {
   const [cartCount, setCartCount] = React.useState(0);
   //counter for cart
-
   const handleAddToCart = () => {
     setCartCount(cartCount + 1);
   };
-//cart count increments each time user clicks
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
 
-        <Grid item xs={12} sm={12} md={12}>
-          <NaviBar cartNum={cartCount} />
+              <Grid item xs={12} sm={12} md={12}>
+                  <NaviBar cartNum={cartCount} />
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
@@ -150,7 +148,7 @@ export default function BasicGrid() {
             </div>
           </Item>
           <Item>
-            <Text texttitle={<h3>Description</h3>} icon={<InfoIcon />} content={content} />{ /*print description*/}
+                      <Text texttitle={<h3>Description</h3>} icon={<InfoIcon />} content={content} />{ /*print description*/}
           </Item>
         </Grid>
 
@@ -159,21 +157,24 @@ export default function BasicGrid() {
           <Text texttitle={<h1>NFT #12092</h1>} icon={<LocalFireDepartmentIcon/>} content={info}/>
           </Item>
           <Item>
-            <div>{/*buttons positioned side by side through stack and row*/}
-                <Stack direction="row" spacing={2} >                                                   
-                  <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
-                  <Buttons icon={<LocalOfferIcon/>} label={"offer"}/>
+            
+            <div>
+                <Stack direction="row" spacing={2} >
+                              <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
+                              <Buttons icon={<LocalOfferIcon />} label={"Offer"} />
+
                   <Link to="/purchase">
                   <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/>
-                  </Link>{/*buy button links to purchase page*/}                  
+                  </Link>
+                  
                 </Stack>
             </div>
           </Item>
-          <Item>  {/*pagesize is the numberof columns in the grid*/}
-            <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162}/>} icon={<GavelIcon/>} heading={"Listings"}/>  
+          <Item>  
+                      <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162} />} icon={<GavelIcon />} heading={"Listings"} />      { /*print listing table*/}
           </Item>
-          <Item>
-            <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />
+                  <Item>
+                      <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />{ /*print offering table*/}
           </Item>
           </Grid>
 

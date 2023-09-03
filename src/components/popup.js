@@ -7,10 +7,9 @@ import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
-import Buttons from './buttons';
 
-
-export default function AlertDialog({infomsg, confirmmsg, icon, label}) {
+export default function AlertDialog() {
+    //function to return a message when the buy button is pressed 
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -23,17 +22,20 @@ export default function AlertDialog({infomsg, confirmmsg, icon, label}) {
 
   return (
     <div>
-      {<Buttons onClick={handleClickOpen} icon={icon} label={label}/>}
+      <Button variant="outlined" onClick={handleClickOpen}>
+        Open alert dialog
+      </Button>
       <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="alertmsg"
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
       >
-        <DialogTitle id="alertmsg">
-          {infomsg}
+        <DialogTitle id="alert-dialog-title">
+          {"Purchase sent."}
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose}>{confirmmsg}</Button>
+                  <Button onClick={handleClose}>Close</Button>{ /*to close the pop up screen*/}
         </DialogActions>
       </Dialog>
     </div>
