@@ -1,6 +1,9 @@
+/*student ID:104266437
+    name: Rino Quijote
+    group: g-99
+*/
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import wallpaper from './img/wallpaper.jpg';
 import profilePicture from './img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
@@ -8,8 +11,9 @@ import ImageListItem from '@mui/material/ImageListItem';
 import NaviBar from './components/header.js';
 import Grid from '@mui/material/Grid';
 import TransacCard from './components/transactioncard';
-import { Item, NftData } from './home.js'
+import { Item } from './home.js'
 import Footer from './components/footer.jsx';
+
 
 /*
 Unsure about in-line references. But, just in case I forget to ask on Tuesday:
@@ -38,6 +42,23 @@ function ProfilePage() {
   //Toggle button || Reference 5.
   const [toggle, setToggle] = useState(true)
   const ButtonText = toggle ? "Inventory" : "Transaction History";
+
+
+    /*dummy data*/
+
+    const transactionData = [
+        { url: "https://images.unsplash.com/photo-1609258612794-3502fb4306a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda1", date: "12/12/2022", price: "2 " },
+        { url: "https://images.unsplash.com/photo-1610714872435-96712ebf1594?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2654&q=80", name: "Yoda2", date: "12/10/2022", price: "7 " },
+        { url: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda3", date: "19/12/2020", price: "8 " },
+        { url: "https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80", name: "Yoda4", date: "02/3/2019", price: "4 " },
+        { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017", price: "2 " },
+        { url: "https://images.unsplash.com/photo-1610714872435-96712ebf1594?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2654&q=80", name: "Yoda2", date: "09/3/2017 ", price: "4 " },
+        { url: "https://images.unsplash.com/photo-1618336753974-aae8e04506aa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda3", date: "09/3/2017 ", price: "11 " },
+        { url: "https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80", name: "Yoda4", date: "09/3/2017 ", price: "3 " },
+        { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017 ", price: "5 " },
+        { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017 ", price: "9 " }
+
+    ];
 
   const itemData = [
     {
@@ -167,7 +188,8 @@ function ProfilePage() {
           )}
           {/* Transaction History*/}
           <div style={inventoryBackground}>
-            {!toggle && (
+                  {!toggle && (
+
               <Grid
                 container
                 direction="row"
@@ -178,13 +200,26 @@ function ProfilePage() {
                 style={{
                   overflow: "auto",
                   maxHeight: "50vh",
-                }}>
-                <Grid item xs={12} sm={12} md={12}>
-                  <Item>
-                    <TransacCard NftData={NftData} />
-                  </Item>
+                          }}>
+                          <Grid container spacing={2}>
+                              <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>{/*description info for top 10*/}
+                                  <h5 style={{ marginRight: "35%", marginLeft: "1.5%" }}>Collection</h5>
+                                  <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
+                                  <h5 style={{ marginRight: "3%" }}>Volume</h5>
+
+                              </Grid>
+                              <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>
+                                  <h5 style={{ marginRight: "35%", marginLeft: "4%" }}>Collection</h5>
+                                  <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
+                                  <h5 style={{ marginRight: "3%" }}>Volume</h5>
+                              </Grid>
+                          </Grid>
+                          <Grid item xs={12} sm={12} md={12}>
+                              <hr></hr>
+                    <TransacCard NftData={transactionData} />
                 </Grid>
               </Grid>
+
             )}
         </div>
         </div>
@@ -196,4 +231,3 @@ function ProfilePage() {
 
 export default ProfilePage;
 
-{}

@@ -1,3 +1,8 @@
+/*student ID:104249085
+    name: henry nguyen
+    group: g-99
+*/
+
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -25,7 +30,7 @@ const currencies = [
     },
   ];
 
-export default function Inputs() {
+export default function Inputs() {/*MUI inputs where we use for the user name and password*/
   const [showPassword, setShowPassword] = React.useState(false);
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);

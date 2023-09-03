@@ -1,3 +1,7 @@
+/*student ID:104249085
+    name: henry nguyen
+    group: g-99
+*/
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import Dialog from '@mui/material/Dialog';
@@ -5,6 +9,7 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 
 export default function AlertDialog() {
+    //function to return a message when the buy button is pressed 
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {
@@ -30,7 +35,7 @@ export default function AlertDialog() {
           {"Purchase sent."}
         </DialogTitle>
         <DialogActions>
-          <Button onClick={handleClose}>Close</Button>
+                  <Button onClick={handleClose}>Close</Button>{ /*to close the pop up screen*/}
         </DialogActions>
       </Dialog>
     </div>

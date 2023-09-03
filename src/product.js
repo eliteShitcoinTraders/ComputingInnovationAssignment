@@ -1,10 +1,14 @@
+/*student ID:104249085
+    name: henry nguyen
+    group: g-99
+*/
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
-import Buttons, {OfferButton } from './components/buttons.js';
+import Buttons from './components/buttons.js';
 import Stack from '@mui/material/Stack';
 import DataGridDemo from './components/datagrid.js';
 import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
@@ -16,6 +20,8 @@ import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import LocalOfferIcon from '@mui/icons-material/LocalOffer';
+
 import { Link } from 'react-router-dom';
 
 
@@ -49,7 +55,7 @@ const Image = styled('img')({
   objectFit: 'cover',
   borderRadius: '6px', 
 });
-
+//column and row desc
 const columns = [  
   {
     field: 'price',
@@ -118,7 +124,7 @@ const rows = [
 
 export default function BasicGrid() {
   const [cartCount, setCartCount] = React.useState(0);
-
+  //counter for cart
   const handleAddToCart = () => {
     setCartCount(cartCount + 1);
   };
@@ -127,21 +133,22 @@ export default function BasicGrid() {
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
 
-        <Grid item xs={12} sm={12} md={12}>
-          <NaviBar />
+              <Grid item xs={12} sm={12} md={12}>
+                  <NaviBar cartNum={cartCount} />
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
           <Item>
             <div>
+              {/*image for our listing*/}
               <Image
                 src="https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80"
                 alt="YodaNFTImage"
-                />
+              />
             </div>
           </Item>
           <Item>
-              <Text texttitle={<h3>Description</h3>} icon={<InfoIcon/>} content={content}/>
+                      <Text texttitle={<h3>Description</h3>} icon={<InfoIcon />} content={content} />{ /*print description*/}
           </Item>
         </Grid>
 
@@ -153,8 +160,9 @@ export default function BasicGrid() {
             
             <div>
                 <Stack direction="row" spacing={2} >
-                  <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
-                  <OfferButton />
+                              <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} />
+                              <Buttons icon={<LocalOfferIcon />} label={"Offer"} />
+
                   <Link to="/purchase">
                   <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/>
                   </Link>
@@ -163,10 +171,10 @@ export default function BasicGrid() {
             </div>
           </Item>
           <Item>  
-            <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162}/>} icon={<GavelIcon/>} heading={"Listings"}/>      
+                      <NestedList datagrid={<DataGridDemo columns={col2} rows={rows2} pageSize={2} height={162} />} icon={<GavelIcon />} heading={"Listings"} />      { /*print listing table*/}
           </Item>
                   <Item>
-                      <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />
+                      <NestedList datagrid={<DataGridDemo columns={columns} rows={rows} pageSize={7} height={350} />} icon={<FormatListBulletedIcon />} heading={"Offers"} />{ /*print offering table*/}
           </Item>
           </Grid>
 

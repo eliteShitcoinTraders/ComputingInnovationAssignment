@@ -1,5 +1,10 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
+/*to remove horizontal overflow*/
 .notable-list {
-    display: inline-flex;
+    display: inline-flex; 
     max-width:100%;
 
 }

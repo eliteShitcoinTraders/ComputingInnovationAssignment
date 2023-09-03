@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
@@ -12,7 +16,8 @@ export default function BasicSelect() {
     setAge(event.target.value);
   };
 
-  return (
+    return (
+      //used for the category when search
       <Box sx={{ minWidth: '120', maxWidth:'99.5%'}}>
           <FormControl fullWidth style={{ backgroundcolor: "blue" }} >
               <InputLabel id="demo-simple-select-label">Currency</InputLabel>

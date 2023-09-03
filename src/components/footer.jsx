@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import * as React from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
@@ -6,7 +10,7 @@ import Grid from "@mui/material/Grid";
 import { Facebook, Instagram, Twitter } from "@mui/icons-material";
 import { Box } from "@mui/material";
 
-export default function Footer() {
+export default function Footer() { /*MUI footer*/
     return (
         <Box
             component="footer"

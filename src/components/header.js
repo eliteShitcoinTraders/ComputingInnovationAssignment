@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -17,8 +21,8 @@ import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
 
-const pages = ['Products', 'Pricing', 'News', 'Blog'];
-const settings = ['Settings', 'Profile', 'Logout']; // Define your settings here
+const pages = ['Products', 'Pricing', 'News', 'Blog'];//giving header options value
+const settings = ['Settings', 'Profile', 'Logout'];//profile options
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -29,7 +33,7 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
     },
 }));
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar({ cartNum}) {/*Mui ResponsiveAppBar with a cart icon*/
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -129,11 +133,21 @@ function ResponsiveAppBar() {
                         POOPIECOINTRADER
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
+                        {pages.map((page, index) => (
                             <Button
                                 key={page}
                                 onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
+                                component={Link}
+                                to={index === 0 ? '/productListing' : '#'} 
+                                sx={{
+                                    my: 2,
+                                    color: 'inherit', 
+                                    display: 'block',
+                                    textDecoration: 'none', 
+                                    '&:hover': {
+                                        textDecoration: 'none', 
+                                    },
+                                }}
                             >
                                 {page}
                             </Button>
@@ -149,7 +163,7 @@ function ResponsiveAppBar() {
                             </Link>
                         </Tooltip>
                         <IconButton aria-label="cart" style={{ marginLeft:"25px" }}>
-                            <StyledBadge badgeContent={4} color="secondary">
+                            <StyledBadge badgeContent={cartNum} color="secondary">
                                 <ShoppingCartIcon style={{ color: "white" }} />
                             </StyledBadge>
                         </IconButton>

@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,6 +12,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function ActionAreaCard({ cardinfo, header }) {
+    //style info
     const Pricedisplay = {
         display: 'flex', // Use flexbox to arrange items horizontally
         justifyContent: 'space-between', // Add space between the items
@@ -15,7 +20,6 @@ export default function ActionAreaCard({ cardinfo, header }) {
     };
 
     const cardStyle = {
-        width: '55%', // Set the desired fixed width
         margin: '.5%',
     };
 
@@ -23,14 +27,14 @@ export default function ActionAreaCard({ cardinfo, header }) {
         height: '250px', // Set a fixed height for the image
     };
     return (   
-        <Card sx={cardStyle} >
+        <Card sx={cardStyle} >{/* MUI functionalities with some design tweaks*/}
             <CardActionArea>
                 <Link to="/product">
                 <CardMedia
                     {...mediaStyle}
                     component="img"
                     image={cardinfo.url}
-                    alt="green iguana"
+                    alt="no IMG"
                 />
                 </Link>
                 <CardContent>

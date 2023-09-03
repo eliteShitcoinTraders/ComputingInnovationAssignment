@@ -1,3 +1,7 @@
+/*student ID:104266437
+    name: Rino Quijote
+    group: g-99
+*/
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
@@ -24,7 +28,7 @@ const Item = styled(Paper)(({ theme }) => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
 }));
-
+/*dummy data*/
 const slides = [
     { url: "https://images.unsplash.com/photo-1609258612794-3502fb4306a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", title: "yoda1" },
     { url: "https://images.unsplash.com/photo-1610714872435-96712ebf1594?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2654&q=80", title: "yoda2" },
@@ -34,6 +38,8 @@ const slides = [
 
 
 ];
+/*dummy data*/
+
 const NftData = [
     { rank: "1", url: "https://images.unsplash.com/photo-1609258612794-3502fb4306a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda1", priceFloor: "12 ", volume: "750 " },
     { rank: "2", url: "https://images.unsplash.com/photo-1610714872435-96712ebf1594?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2654&q=80", name: "Yoda2", priceFloor: "11 ", volume: "146 " },
@@ -48,6 +54,7 @@ const NftData = [
 
 ];
 
+/*dummy data*/
 
 const cardinfo = [
     { url: "https://images.unsplash.com/photo-1609258612794-3502fb4306a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2670&q=80", name: "Yoda1", priceFloor: "12 ", volume: "750 " },
@@ -61,6 +68,7 @@ const cardinfo = [
 ];
 
 
+/*css styles*/
 const containerStyles = {
     width: "100%",
     height: "700px",
@@ -77,16 +85,16 @@ const containerStyles = {
 
 
 
-export default function BasicGrid() {
+export default function BasicGrid() {/*header function*/
 
     const [result, setResults] = React.useState([]);
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} >
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12}> {/*i navigation bar*/}
                         < NaviBar/>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12} >
+                <Grid item xs={12} sm={12} md={12} > {/*search functionalities*/}
                     <hr></hr>
                     < SeclectDropDown />
 
@@ -95,22 +103,41 @@ export default function BasicGrid() {
                     <hr></hr>
                 </Grid>
 
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12}> {/*Image Slide show*/}
                         <div style={containerStyles}>
                             < ImageSlider slides={slides} />
 
                         </div>
                 </Grid>
 
-                <Grid item xs={2} sm={2} md={2} style={{ marginLeft: "20px" }}>
+                <Grid item xs={2} sm={2} md={2} style={{ marginLeft: "20px" }}> {/*option for the top 10*/}
                     < OptionBars  />
                 </Grid>
 
 
             </Grid>
-            <Grid container spacing={2} id="oneTh">
-                <Grid item xs={12} sm={12} md={12}>
-                        {/*                        <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />*/}
+            <hr></hr>
+
+            <Grid container spacing={2}>
+                <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>{/*description info for top 10*/}
+                    <h5 style={{ marginRight: "2.5%", marginLeft: ".5%" }}>Rank</h5>
+                    <h5 style={{ marginRight: "33%" }}>Collection</h5>
+                    <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
+                    <h5 style={{ marginRight: "3%" }}>Volume</h5>  
+
+            </Grid>
+                <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>
+                    <h5 style={{ marginRight: "2.5%", marginLeft: "3.5%" }}>Rank</h5>
+                    <h5 style={{ marginRight: "33%" }}>Collection</h5>
+                    <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
+                    <h5 style={{ marginRight: "3%" }}>Volume</h5>  
+
+
+            </Grid>
+            </Grid>
+
+            <Grid container spacing={2}>
+                <Grid item xs={12} sm={12} md={12} >
                         <hr></hr>
 
                         <Itemcard NftData={NftData} />
@@ -120,7 +147,7 @@ export default function BasicGrid() {
 
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4}>{/*notable row */}
                     <div
 
                             style={headerStyle}
@@ -129,7 +156,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={12} md={12}>
                         <NotableRow cardinfo={cardinfo} />
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4}>{/*Top Collector Buys Today row */}
                         <div
                             style={headerStyle}
                         >Top Collector Buys Today</div>
@@ -137,7 +164,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={12} md={12}>
                         <NotableRow cardinfo={cardinfo} />
                 </Grid>
-                <Grid item xs={12} sm={6} md={4}>
+                <Grid item xs={12} sm={6} md={4}>{/*Trending in Art row*/}
                         <div
                             style={headerStyle}
                         >Trending in Art</div>
@@ -145,7 +172,7 @@ export default function BasicGrid() {
                 <Grid item xs={12} sm={12} md={12}>
                         <NotableRow cardinfo={cardinfo} />
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>
+                <Grid item xs={12} sm={12} md={12}>{/*footer*/}
                         <FooterMain />
                 </Grid>
             </Grid>
@@ -154,4 +181,4 @@ export default function BasicGrid() {
     );
 }
 
-export {Item, NftData};
+export { Item };

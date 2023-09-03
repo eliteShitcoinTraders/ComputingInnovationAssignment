@@ -1,3 +1,7 @@
+/*student ID:
+    name: henry nguyen
+    group: g-99
+*/
 import * as React from 'react';
 import { styled } from '@mui/material/styles';
 import Divider from '@mui/material/Divider';
@@ -10,7 +14,8 @@ const Root = styled('div')(({ theme }) => ({
   },
 }));
 
-export function Text({texttitle, content, icon}) {
+export function Text({ texttitle, content, icon }) {
+    //genral use textbox with specified styles
     return (
       <Root>
         <Divider textAlign="left">

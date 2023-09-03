@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import * as React from 'react';
 import Button from '@mui/material/Button';
 import ButtonGroup from '@mui/material/ButtonGroup';
@@ -13,6 +17,7 @@ const leftSideButton = {
 };
 
 export default function BasicButtonGroup() {
+    //print out option button for top 10 collection
     return (
         <ButtonGroup variant="contained" aria-label="outlined primary button group" >
             <Button style={leftSideButton}>today</Button>

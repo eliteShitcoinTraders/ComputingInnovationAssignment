@@ -1,3 +1,7 @@
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 import React, { useState } from 'react';
 import './css/itemcard.css';
 import Grid from '@mui/material/Grid';
@@ -5,8 +9,10 @@ import { Link } from 'react-router-dom';
 
 
 const ItemCard = ({ NftData }) => {
+    //input data is needed which contains ranking, imgUrl, name, floor price, and volume 
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
+    //styles setting
     const containerStyle = {
         display: "flex",
         flexWrap: "wrap",
@@ -28,7 +34,7 @@ const ItemCard = ({ NftData }) => {
         width: "90px",
         height: "90px",
         borderRadius: "15px",
-        marginRight: "20px", // Add spacing between image and content
+        marginRight: "20px", 
     };
 
     const contentStyle = {
@@ -48,7 +54,7 @@ const ItemCard = ({ NftData }) => {
         fontWeight: "600",
         marginRight: "40px",
     };
-
+    //this function returns the cards for our top 10
     return (
 
         <div style={containerStyle}>

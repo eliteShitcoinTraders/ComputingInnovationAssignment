@@ -1,3 +1,7 @@
+/*student ID:104266437
+    name: Rino Quijote
+    group: g-99
+*/
 import React, { useState } from 'react';
 import './css/itemcard.css';
 import Grid from '@mui/material/Grid';
@@ -7,6 +11,7 @@ import { Link } from 'react-router-dom';
 const ItemCard = ({ NftData }) => {
     const [hoveredIndex, setHoveredIndex] = useState(null);
 
+    //styles setting
     const containerStyle = {
         display: "flex",
         flexWrap: "wrap",
@@ -25,10 +30,10 @@ const ItemCard = ({ NftData }) => {
     });
 
     const imageStyle = {
-        width: "100px",
-        height: "100px",
-        borderRadius: "4px",
-        marginRight: "40px", // Add spacing between image and content
+        width: "90px",
+        height: "90px",
+        borderRadius: "15px",
+        marginRight: "20px",
     };
 
     const contentStyle = {
@@ -40,9 +45,8 @@ const ItemCard = ({ NftData }) => {
     };
 
     const headerStyle = {
-        color: "",
         letterSpacing: ".05rem",
-        fontWeight: "bold",
+        fontWeight: "600",
     };
 
     return (
@@ -65,10 +69,10 @@ const ItemCard = ({ NftData }) => {
                             <h3 style={headerStyle}>{item.name}</h3>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.paymentInfo}ETH</h4>
+                            <h4>{item.date}</h4>
                         </div>
                         <div style={contentStyle}>
-                            <h4>{item.transactionDate}DATE</h4>
+                            <h4>{item.price}ETH</h4>
                         </div>
                     </div>
 

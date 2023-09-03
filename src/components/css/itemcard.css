@@ -1,5 +1,10 @@
+
+/*student ID:103798447
+    name: sothearak heng
+    group: g-99
+*/
 .grid-item:hover {
-    background-color: lightgray; /* Change to the desired background color on hover */
+    background-color: lightgray; /* Change to the lightgray background color on hover */
 }
 .h2{
     color: blue;

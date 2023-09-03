@@ -1,3 +1,7 @@
+/*student ID:103798447
+	name: sothearak heng
+	group: g-99
+*/
 import { useState } from 'react';
 import { useEffect } from 'react';
 
@@ -6,13 +10,14 @@ import { useEffect } from 'react';
 const ImageSlider = ({ slides }) => {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
-	const sliderstyles = {
+	/*css files for image slider*/
+	const sliderstyles = {/*for img container*/
 
 		height: "100%",
 		position:"relative"
 	};
 
-	const slidestyles = {
+	const slidestyles = {/*for each slides*/
 		width: "100%",
 		height: "100%",
 		borderRadius: "10px",
@@ -21,7 +26,7 @@ const ImageSlider = ({ slides }) => {
 		backgroundImage: `url(${slides[currentIndex].url})`,
 	};
 
-	const leftArrowStyles = {
+	const leftArrowStyles = {/*for arrrow*/
 		position: "absolute",
 		top: "50%",
 		transform: "translate(0, -50%)",
@@ -33,7 +38,7 @@ const ImageSlider = ({ slides }) => {
 
 	};
 
-	const rightArrowStyles = {
+	const rightArrowStyles = {/*for arrrow*/
 		position: "absolute",
 		top: "50%",
 		transform: "translate(0, -50%)",
@@ -45,11 +50,13 @@ const ImageSlider = ({ slides }) => {
 
 	};
 
+	//function to allow the user to go back to the previous slides by changing the index
 	const goToPrevious = () => {
 		const isFirstSlide = currentIndex === 0
 		const newIndex = isFirstSlide ? slides.length - 1 : currentIndex - 1;
 		setCurrentIndex(newIndex);
 	};
+	//function to allow the user to go back to the next slides by changing the index
 
 	const goToNext = () => {
 		const isLastSlide = currentIndex === slides.length - 1;
