@@ -14,26 +14,26 @@ import TextField from '@mui/material/TextField';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import MenuItem from '@mui/material/MenuItem';
-//drop down list values
+
 const currencies = [
     {
-      value: 'ETH',
-      label: 'ETH',
+      value: 'USD',
+      label: '$ - USD',
     },
     {
       value: 'BTC',
-      label: 'BTC',
+      label: '฿ - BTC',
     },
     {
       value: 'AUD',
-      label: 'AUD',
+      label: '$ - AUD',
     },
   ];
 
 export default function Inputs() {/*MUI inputs where we use for the user name and password*/
   const [showPassword, setShowPassword] = React.useState(false);
 
-  const handleClickShowPassword = () => setShowPassword((show) => !show); //hide and show password functions
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (event) => {
     event.preventDefault();
@@ -43,14 +43,14 @@ export default function Inputs() {/*MUI inputs where we use for the user name an
     <Box sx={{ display: 'flex', flexWrap: 'wrap' }}>
       <div>
       <FormControl sx={{ m: 1, width: '30ch'}} variant="standard">
-          <InputLabel htmlFor="username">Username</InputLabel> {/*input for username section*/}
+          <InputLabel htmlFor="username">Username</InputLabel>
           <Input
             id="username"
           />
         </FormControl>
 
         <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
-          <InputLabel htmlFor="pw">Password</InputLabel> {/*input for pw*/}
+          <InputLabel htmlFor="pw">Password</InputLabel>
           <Input
             id="pw"
             type={showPassword ? 'text' : 'password'}
@@ -73,12 +73,12 @@ export default function Inputs() {/*MUI inputs where we use for the user name an
       </div>
       <div>
         <TextField
-          label="Wallet ID" //input for wallet id
+          label="Wallet ID"
           id="walletID"
           sx={{ m: 1, width: '50ch' }}
           variant="standard"
         />
-        <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined"> {/* drop down options for currency*/}
+        <FormControl sx={{ m: 1, width: '30ch' }} variant="outlined">
         <TextField
           id="outlined-select-currency"
           select
