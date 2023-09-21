@@ -5,10 +5,13 @@
 import * as React from 'react';
 import Button from '@mui/material/Button';
 
-export default function Buttons({label, onClick, icon}) {
-  return (
-    <Button variant="contained" startIcon={icon} onClick={onClick}>
-      {label}  {/* can passes 3 variables, starticon=icon displayed e.g <button1/>, onclick=function called, label = name of button(string)*/}
-    </Button>   
-  );
+export default function Buttons({ label, onClick, icon }) {
+    /*this function returns a button with tag and icon*/
+    return (
+        <Button variant="contained" startIcon={icon} onClick={onClick}>
+            {label}
+        </Button>
+    );
 }
+
+

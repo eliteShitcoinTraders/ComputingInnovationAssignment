@@ -10,9 +10,17 @@ import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
 import Footer from './components/footer';
 import { Text } from './components/textbox.js';
+import Buttons from './components/buttons.js';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Inputs from './components/inputfield.js';
+<<<<<<< HEAD
 import AlertDialog from './components/popup.js';
+=======
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogTitle from '@mui/material/DialogTitle';
+import { Button } from '@mui/material';
+>>>>>>> parent of 408b8f9 (comments and code cleanr up 2)
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,6 +38,15 @@ const content = (
 );
 
 export default function AutoGrid() {
+  const [open, setOpen] = React.useState(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
   return (
     
@@ -37,14 +54,40 @@ export default function AutoGrid() {
       <Grid item xs={12} sm={12} md={12}>
           <Item><NaviBar/> </Item>
       </Grid>
+<<<<<<< HEAD
       <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>{/*center the grid */}
+=======
+      
+
+      <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>
+>>>>>>> parent of 408b8f9 (comments and code cleanr up 2)
       
         <Grid item xs={6}>
           <Item>
           <h1>Checkout</h1>
             <Text texttitle={<h2>Subtotal: $5,000</h2>} content={content}/> {/*subtotal prompts for user */}
             <Inputs/>
+<<<<<<< HEAD
             <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>{/*popup imported from popup */}            
+=======
+            <Buttons icon={<MonetizationOnIcon/>} onClick={handleClickOpen} label={"BUY"} />
+
+            <div>
+            <Dialog
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="alertmsg"
+            >
+              <DialogTitle id="alertmsg">
+              {"Purchase Processed."}
+              </DialogTitle>
+              <DialogActions>            
+                <Button onClick={handleClose}>Close</Button>
+              </DialogActions>
+            </Dialog>
+            </div>
+            
+>>>>>>> parent of 408b8f9 (comments and code cleanr up 2)
           </Item>
         </Grid>
        
