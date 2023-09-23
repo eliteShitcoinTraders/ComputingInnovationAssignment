@@ -18,16 +18,12 @@ import AlertDialog from './components/popup.js';
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
 =======
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogTitle from '@mui/material/DialogTitle';
 import { Button } from '@mui/material';
 >>>>>>> parent of 408b8f9 (comments and code cleanr up 2)
-=======
-import { MonetizationOn } from '@mui/icons-material';
->>>>>>> parent of 9b58ffd (comments)
 =======
 import { MonetizationOn } from '@mui/icons-material';
 >>>>>>> parent of 9b58ffd (comments)
@@ -74,7 +70,6 @@ export default function AutoGrid() {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
-<<<<<<< HEAD
       <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>{/*center the grid */}
 =======
       
@@ -90,16 +85,12 @@ export default function AutoGrid() {
 =======
       <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>
 >>>>>>> parent of 9b58ffd (comments)
-=======
-      <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>
->>>>>>> parent of 9b58ffd (comments)
       
         <Grid item xs={6}>
           <Item>
           <h1>Checkout</h1>
             <Text texttitle={<h2>Subtotal: $5,000</h2>} content={content}/>
             <Inputs/>
-<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
@@ -124,9 +115,6 @@ export default function AutoGrid() {
             </div>
             
 >>>>>>> parent of 408b8f9 (comments and code cleanr up 2)
-=======
-            <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>            
->>>>>>> parent of 9b58ffd (comments)
 =======
             <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>            
 >>>>>>> parent of 9b58ffd (comments)
