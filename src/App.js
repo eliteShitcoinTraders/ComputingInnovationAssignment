@@ -10,6 +10,9 @@ import Product from './product';
 import Purchase from './purchase';
 import Profile from './profilepage';
 import ProductListing from './productListing';
+import Test from './test';
+import ProductListingaxios from './productpage_with_axios.js';
+
 
 //React Router was used to route the pages together.
 function App() {
@@ -22,6 +25,7 @@ function App() {
                     <Route path="/purchase" element={<Purchase/>}/>
                     <Route path="/profilepage" element={<Profile />} />
                     <Route path="/productListing" element={<ProductListing />} />
+                    <Route path="/testing" element={<Test />} />
 
                 </Routes>
             </Router>

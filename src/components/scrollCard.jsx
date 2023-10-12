@@ -33,22 +33,22 @@ export default function ActionAreaCard({ cardinfo, header }) {
                 <CardMedia
                     {...mediaStyle}
                     component="img"
-                    image={cardinfo.url}
+                    image={cardinfo.Img_Url}
                     alt="no IMG"
                 />
                 </Link>
                 <CardContent>
                     <Typography gutterBottom variant="h5" component="div">
-                        {cardinfo.name}
+                        {cardinfo.Name}
                     </Typography>
                     <div style={Pricedisplay}>
                         <Typography variant="body2" color="text.secondary" >
                             <h4>{header.headerOne}</h4>
-                            {cardinfo.priceFloor}ETH
+                            {cardinfo.Mint_Price}ETH
                         </Typography>
                         <Typography variant="body2" color="text.secondary" >
                             <h4>{header.headerTwo}</h4>
-                            {cardinfo.volume}ETH
+                            {cardinfo.Price}ETH
                         </Typography>
                     </div>
                 </CardContent>
