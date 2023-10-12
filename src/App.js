@@ -11,7 +11,6 @@ import Purchase from './purchase';
 import Profile from './profilepage';
 import ProductListing from './productListing';
 import Test from './test';
-import ProductListingaxios from './productpage_with_axios.js';
 
 
 //React Router was used to route the pages together.
