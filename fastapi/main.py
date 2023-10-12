@@ -13,7 +13,7 @@ origins = ["*"]
 db_config = {
     "host": "localhost",
     "user": "root",
-    "password": "123456789",
+    "password": "data123", #password needs to be changed
     "database": "nft_site"
 }
 
@@ -47,7 +47,7 @@ def get_assets():
         cursor = connection.cursor()
 
         # Define the SQL query to retrieve data (e.g., all assets)
-        query = "SELECT * FROM asset ORDER BY Asset_ID"
+        query = "SELECT * FROM nft_site.asset ORDER BY Asset_ID"
 
         # Execute the SQL query
         cursor.execute(query)

@@ -5,25 +5,27 @@
 import React, { useState } from 'react'; 
 import SearchIcon from '@mui/icons-material/Search';
 import "./css/searchBar.css";
+import axios from "axios";
 
 const SearchBar = ({ setResults }) => { 
-    const [input, setInput] = useState(null); 
+    const [input, setInput] = useState(""); 
 
     const fetchData = (value) => {
-        fetch("https://jsonplaceholder.typicode.com/users")//getting dumy data from jsonholder for our search bar
-            .then((response) => response.json())
-            .then((json) => {
-                const results = json.filter((user) => {
-                    return (
-                        value &&// see if there is a vlue in the seach box
-                        user &&// see if it is a user
-                        user.name &&// see if it is a user name
-                        user.name.toLowerCase().includes(value)//compares the name and see if matches
-                    );
+        axios.get('http://127.0.0.1:8000/assets')
+          .then((response) => {
+            const assets = response.data; 
+            const results = assets.filter((asset) => {
+              return (
+                value &&// see if there is a vlue in the seach box
+                asset &&// see if it is a user
+                asset.Name && // see if it is a user name
+                asset.Name.toLowerCase().includes(value.toLowerCase()) //to lower
+              );
             });
-        setResults(results);//send out result
-            });
-    };
+            setResults(results);
+          })
+      };
+      
 
     const handleChange = (value) => {
         setInput(value);
@@ -33,7 +35,7 @@ const SearchBar = ({ setResults }) => {
     return (
         <div className="inputTaker">
             <SearchIcon style={{ color: 'white' }} />
-            <input placeholder="Search Items, Collections, and Accounts"
+            <input placeholder="Search for Assets"
                 value={input}
                 onChange={(e) => handleChange(e.target.value)} />{ /*make changes when there is an input*/}
         </div>
@@ -41,3 +43,4 @@ const SearchBar = ({ setResults }) => {
 }
 
 export default SearchBar;
+

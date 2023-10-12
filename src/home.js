@@ -1,5 +1,5 @@
-/*student ID:104266437
-    name: Rino Quijote
+/*student ID:103798447
+    name: sothearak heng
     group: g-99
 */
 import * as React from 'react';
