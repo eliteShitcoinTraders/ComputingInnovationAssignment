@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 export default function ActionAreaCard({ cardinfo, header }) {
     //style info
+    //${cardinfo.asset_ID}
     const Pricedisplay = {
         display: 'flex', // Use flexbox to arrange items horizontally
         justifyContent: 'space-between', // Add space between the items
@@ -24,18 +25,18 @@ export default function ActionAreaCard({ cardinfo, header }) {
     };
 
     const mediaStyle = {
-        height: '250px', // Set a fixed height for the image
-
+        height: '250px', // Set a fixed height for the image    
     };
+
     return (   
         <Card sx={cardStyle} >{/* MUI functionalities with some design tweaks*/}
             <CardActionArea>
-                <Link to="/product">
+            <Link to={`/product/${cardinfo.Asset_ID}`}> {/* Goes to Product Page based on the Asset ID*/}
                 <CardMedia
                     {...mediaStyle}
                     component="img"
                     image={cardinfo.Img_Url}
-                    alt="no IMG"
+                    alt="no img"
                 />
                 </Link>
                 <CardContent>
@@ -58,4 +59,5 @@ export default function ActionAreaCard({ cardinfo, header }) {
         
         
     );
+    
 }

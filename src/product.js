@@ -21,7 +21,6 @@ import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-
 import { Link } from 'react-router-dom';
 
 
@@ -122,7 +121,9 @@ const rows = [
 ];//grid data for offers
 
 
+
 export default function BasicGrid() {
+
   const [cartCount, setCartCount] = React.useState(0);
   //counter for cart
   const handleAddToCart = () => {

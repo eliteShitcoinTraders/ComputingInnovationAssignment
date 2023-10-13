@@ -8,10 +8,12 @@ import ScrollCard from './scrollCard.jsx';
 
 const searchResult = ({ result }) => {
     //print out a person who matches the description
+
+    console.log(result);
     return (
 
         <div className="resultColumn">
-            <ScrollCard cardinfo={result} header={result.Asset_ID} key={result.Price} />
+            <ScrollCard cardinfo={result} header={result.Asset_ID} key={result.Asset_ID} />
         </div>
 
     );
