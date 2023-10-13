@@ -18,7 +18,7 @@ import { useState, useEffect } from 'react';
 
 
 
-const header = { headerOne: "Buy now", headerTwo: "Current Offer" };
+const header = { headerOne: "Mint Price", headerTwo: "Current Price" };
 
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
