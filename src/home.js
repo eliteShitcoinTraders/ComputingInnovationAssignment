@@ -99,7 +99,7 @@ export default function BasicGrid() {/*header function*/
                     < SeclectDropDown />
 
                     <SearchBar setResults={setResults} />
-                   <SearchResultList result={result} />
+                    <SearchResultList result={result} />
                     <hr></hr>
                 </Grid>
 

@@ -95,7 +95,7 @@ export default function BasicGrid() {
                     >All Listing</div>
                     <hr></hr>
                 </Grid>
-                <Grid container spacing={3} style={{ display: "flex" }}>{/*print out the available listing*/}
+                <Grid container spacing={3} style={{ display: "flex" }}>{/*print out the available lsiting*/}
                     {cardinfo.map((card, id) => (
                         <Grid item xs={2.14} sm={2.14} md={2.14} style={{ marginLeft: "50px" }}>
                             <ScrollCard cardinfo={card} header={header} key={id} />

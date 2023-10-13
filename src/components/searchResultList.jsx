@@ -3,20 +3,20 @@
     group: g-99
 */
 import React from 'react';
-import SearchResult from "./searchResult.jsx"; // Import SearchResult from the correct path
 import "./css/searchResultList.css";
+import SearchResult from "./searchResult.jsx"
 
+const searchResultList = ({ result }) => {
+    //print out a list person who matches the description
 
-const SearchResultList = ({ result }) => {
     return (
         <div className="result-list">
             {
-                result.map((result, id) => {
-                    return <SearchResult result={result} key={id} />;
-                })
+                result.map((result,id) =>{
+                    return <SearchResult result={result} key={ id } />;
+            })
             }
         </div>
     );
 }
-
-export default SearchResultList;
+export default searchResultList;

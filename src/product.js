@@ -3,6 +3,7 @@
     group: g-99
 */
 import * as React from 'react';
+import { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -21,9 +22,34 @@ import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+
+export default function BasicGrid() {
+  const Asset_ID = useParams();
 
 
+  //Editing rn, Axios connection w/ asset table 
+  const [assetInfo, setAssetInfo] = React.useState([]);
+  useEffect(() => {
+    const API_URL = `http://127.0.0.1:8000/assets/`
+
+    axios.get(API_URL, {Asset_ID})
+        .then(response => {
+            setAssetInfo(response.data);
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error("There was an error fetching data:", error);
+        });
+  }, []);
+//End of Axios connection 
+
+  const [cartCount, setCartCount] = React.useState(0);
+  //counter for cart
+  const handleAddToCart = () => {
+    setCartCount(cartCount + 1);
+  };
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -44,7 +70,7 @@ const content = (
 
 const info = (
   <div style={{ textAlign: 'left' }}>
-  Collection: 'cool' <br/> Product by: nftcreater <br/> Owned by: nfttrader123 
+  Collection: insert category <br/> Product by: nftcreater <br/> Owned by: nfttrader123 
 </div>
 ); // nft info and number
 
@@ -122,14 +148,8 @@ const rows = [
 
 
 
-export default function BasicGrid() {
 
-  const [cartCount, setCartCount] = React.useState(0);
-  //counter for cart
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
-  };
-
+  
   return (
     <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
