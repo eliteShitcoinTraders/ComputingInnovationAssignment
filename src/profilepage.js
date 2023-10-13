@@ -151,7 +151,6 @@ function ProfilePage() {
                 textAlign: "center",
               }}>
                 User: Henry Nguyen
-                Owns: **num** items
               </Typography>
             </Box>
           </div>
