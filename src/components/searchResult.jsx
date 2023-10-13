@@ -4,14 +4,16 @@
 */
 import React from 'react';
 import "./css/searchResult.css";
-
+import ScrollCard from './scrollCard.jsx';
 
 const searchResult = ({ result }) => {
     //print out a person who matches the description
     return (
-        <div className="resultColumn" onClick={ (e) => alert(`hovering`)}>
-            {result.name}
+
+        <div className="resultColumn">
+            <ScrollCard cardinfo={result} header={result.Asset_ID} key={result.Price} />
         </div>
+
     );
 }
 export default searchResult;

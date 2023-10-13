@@ -16,11 +16,10 @@ export default function BasicSelect() {
     setAge(event.target.value);
   };
 
-    return (
-      //used for the category when search
-      <Box sx={{ minWidth: '120', maxWidth:'99.5%'}}>
-          <FormControl fullWidth style={{ backgroundcolor: "blue" }} >
-              <InputLabel id="demo-simple-select-label">Currency</InputLabel>
+  return (
+    <Box sx={{ minWidth: 120 }}>
+      <FormControl fullWidth>
+        <InputLabel id="demo-simple-select-label">Categories</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -28,11 +27,9 @@ export default function BasicSelect() {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={1}>ETH</MenuItem>
-          <MenuItem value={2}>BTC</MenuItem>
-          <MenuItem value={3}>SOL</MenuItem>
-          <MenuItem value={4}>DOGE</MenuItem>
-
+          <MenuItem value={10}>Category 1</MenuItem>
+          <MenuItem value={20}>Category 2</MenuItem>
+          <MenuItem value={30}>Category 3</MenuItem>
         </Select>
       </FormControl>
     </Box>

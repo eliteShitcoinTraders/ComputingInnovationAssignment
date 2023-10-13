@@ -25,6 +25,7 @@ export default function ActionAreaCard({ cardinfo, header }) {
 
     const mediaStyle = {
         height: '250px', // Set a fixed height for the image
+
     };
     return (   
         <Card sx={cardStyle} >{/* MUI functionalities with some design tweaks*/}

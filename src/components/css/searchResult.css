@@ -5,8 +5,9 @@
 .resultColumn
 {
     padding: 10px 15px;
-
+    color: black;
 }
 .resultColumn:hover {
     background-color:cornflowerblue;
 }
+

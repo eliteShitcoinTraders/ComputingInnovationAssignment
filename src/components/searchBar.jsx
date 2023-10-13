@@ -22,6 +22,7 @@ const SearchBar = ({ setResults }) => {
                 asset.Name.toLowerCase().includes(value.toLowerCase()) //to lower
               );
             });
+         
             setResults(results);
           })
       };
