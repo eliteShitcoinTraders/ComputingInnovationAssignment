@@ -20,7 +20,7 @@ function App() {
             <Router>
                 <Routes>
                     <Route path="/" element={<BasicGrid />} />
-                    <Route path="/product/:Asset_ID" element={<Product/>} /> {/*Using dynamically changing Asset_ID*/}
+                    <Route path="/product" element={<Product/>} /> 
                     <Route path="/purchase" element={<Purchase/>}/>
                     <Route path="/profilepage" element={<Profile />} />
                     <Route path="/productListing" element={<ProductListing />} />

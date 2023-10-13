@@ -10,6 +10,7 @@
     padding: 0px 15px;
     display:flex;
     align-items:center;
+    color: white;
 }
 input {
     background-color: transparent;
@@ -24,4 +25,8 @@ input {
 }
 input:focus{
     outline:none;
+}
+
+::placeholder {
+    color: white;
 }

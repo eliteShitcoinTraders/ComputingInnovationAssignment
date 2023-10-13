@@ -4,7 +4,7 @@
 */
 import React from 'react';
 import './css/searchResult.css';
-import ScrollCard from './ScrollCard';
+import ScrollCard from './scrollCard.jsx';
 
 const SearchResult = ({ result }) => {
 
@@ -12,11 +12,10 @@ const SearchResult = ({ result }) => {
 
   return (
     <div className="resultColumn">
-      <ScrollCard cardinfo={result} header={result.Asset_ID} key={result.Asset_ID} />
+      
 
-      <div className="resultRow" onClick={(e) => alert(`Clicked!`)}>
-        {result.name}
-        (Big search bar and mini QOL changes)
+      <div className="resultRow">
+      <ScrollCard cardinfo={result} header={result.Asset_ID} key={result.Asset_ID} />
       </div>
 
       <div className="resultRow" onClick={(e) => alert(`Clicked!`)}>
