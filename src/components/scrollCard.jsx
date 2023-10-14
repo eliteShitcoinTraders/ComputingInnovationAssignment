@@ -29,7 +29,7 @@ export default function ActionAreaCard({ cardinfo, header }) {
     return (   
         <Card sx={cardStyle} >{/* MUI functionalities with some design tweaks*/}
             <CardActionArea>
-                <Link to="/product">
+                <Link to={`/product/${cardinfo.Asset_ID}`}>
                 <CardMedia
                     {...mediaStyle}
                     component="img"

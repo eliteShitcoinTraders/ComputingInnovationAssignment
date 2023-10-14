@@ -31,19 +31,19 @@ export default function BasicGrid() {
   const Asset_ID = useParams();
 
   //Editing rn, Axios connection w/ asset table 
-  const [assetInfo, setAssetInfo] = React.useState([]);
-  useEffect(() => {
-    const API_URL = `http://127.0.0.1:8000/assets/`
+    const [result, setResults] = React.useState([]);
 
-    axios.get(API_URL, {Asset_ID})
-        .then(response => {
-            setAssetInfo(response.data);
-            console.log(response.data);
-        })
-        .catch(error => {
-            console.error("There was an error fetching data:", error);
-        });
-  }, []);
+    const [asset, setAsset] = useState([]);
+    useEffect(() => {
+        const API_URL = 'http://127.0.0.1:8000/productsearch/';
+        axios.get(API_URL)
+            .then(response => {
+                setAsset(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching data:", error);
+            });
+    }, []);
 //End of Axios connection 
 
   // retrieves cartcount
