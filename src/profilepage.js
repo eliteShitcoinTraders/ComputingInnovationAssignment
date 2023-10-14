@@ -4,7 +4,7 @@
 */
 import React, { useState } from 'react';
 import Box from '@mui/material/Box';
-import profilePicture from './img/eugene.webp';
+import profilePicture from './components/img/eugene.webp';
 import { Typography } from '@mui/material';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
