@@ -4,6 +4,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from fastapi.responses import HTMLResponse
 import mysql.connector
+from flask import Flask
+
 
 app = FastAPI()
 
@@ -13,7 +15,7 @@ origins = ["*"]
 db_config = {
     "host": "localhost",
     "user": "root",
-    "password": "123456789", #password needs to be changed
+    "password": "data123", #password needs to be changed
     "database": "nft_site"
 }
 
@@ -63,7 +65,7 @@ def get_assets():
 
     except Exception as e:
         return {"error": str(e)}
-    
+
 @app.get("/productsearch/")
 def get_assets():
     try:
@@ -73,7 +75,7 @@ def get_assets():
         cursor = connection.cursor()
 
         # Define the SQL query to retrieve data (e.g., all assets)
-        query = "SELECT * FROM nft_site.asset WHERE asset_ID = ? ORDER BY Asset_ID"
+        query = "SELECT * FROM nft_site.asset WHERE Asset_ID = 3 ORDER BY Asset_ID"
 
         # Execute the SQL query
         cursor.execute(query)
