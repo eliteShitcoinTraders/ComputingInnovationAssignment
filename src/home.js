@@ -16,8 +16,9 @@ import SearchResultList from './components/searchResultList.jsx';
 import NotableRow from './components/notableRow.jsx';
 import FooterMain from './components/footer.jsx';
 import SeclectDropDown from './components/selectDropdown.jsx';
-
 import './components/css/itemcard.css';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 
 
@@ -88,6 +89,17 @@ const containerStyles = {
 export default function BasicGrid() {/*header function*/
 
     const [result, setResults] = React.useState([]);
+    const [cardinfo, setCardinfo] = useState([]);
+    useEffect(() => {
+        const API_URL = 'http://127.0.0.1:8000/assets/';
+        axios.get(API_URL)
+            .then(response => {
+                setCardinfo(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching data:", error);
+            });
+    }, []);
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} >
@@ -104,8 +116,9 @@ export default function BasicGrid() {/*header function*/
                 </Grid>
 
                 <Grid item xs={12} sm={12} md={12}> {/*Image Slide show*/}
-                        <div style={containerStyles}>
-                            < ImageSlider slides={slides} />
+                    <div style={containerStyles}>
+                        {cardinfo && cardinfo.length > 0 && <ImageSlider slides={cardinfo} />}
+
 
                         </div>
                 </Grid>
