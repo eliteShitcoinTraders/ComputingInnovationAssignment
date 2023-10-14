@@ -38,14 +38,13 @@ export default function BasicGrid() {
         axios.get(API_URL)
             .then(response => {
                 setAsset(response.data);
-                console.log(response);
             })
             .catch(error => {
                 console.error("There was an error fetching data:", error);
             });
     }, []);
 //End of Axios connection 
-
+console.log(asset[0].category_ID);
   // retrieves cartcount
 const { cartCount, addToCart, decrementCart } = useCart();
   
@@ -162,8 +161,8 @@ const rows = [
             <div>
               {/*image for our listing*/}
               <Image
-                src={asset.Img_Url}
-                alt={asset.Img_Url}
+                src={asset}
+                alt="YodaNFTImage"
               />
             </div>
           </Item>
