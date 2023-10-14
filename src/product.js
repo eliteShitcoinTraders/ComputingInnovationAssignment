@@ -23,16 +23,32 @@ import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
+import axios from 'axios';
+import { useCart } from './CartContext.js';
 
 export default function BasicGrid() {
+  const Asset_ID = useParams();
 
+  //Editing rn, Axios connection w/ asset table 
+  const [assetInfo, setAssetInfo] = React.useState([]);
+  useEffect(() => {
+    const API_URL = `http://127.0.0.1:8000/assets/`
 
-  const [cartCount, setCartCount] = React.useState(0);
-  //counter for cart
-  const handleAddToCart = () => {
-    setCartCount(cartCount + 1);
-  };
+    axios.get(API_URL, {Asset_ID})
+        .then(response => {
+            setAssetInfo(response.data);
+            console.log(response.data);
+        })
+        .catch(error => {
+            console.error("There was an error fetching data:", error);
+        });
+  }, []);
+//End of Axios connection 
+
+  // retrieves cartcount
+const { cartCount, addToCart, decrementCart } = useCart();
+  
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -138,7 +154,7 @@ const rows = [
       <Grid container spacing={2}>
 
               <Grid item xs={12} sm={12} md={12}>
-                  <NaviBar cartNum={cartCount} />
+                  <NaviBar num={cartCount} />
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
@@ -164,8 +180,8 @@ const rows = [
             
             <div>
                 <Stack direction="row" spacing={2} >
-                  <Buttons onClick={handleAddToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
-                  <Buttons icon={<LocalOfferIcon />} label={"Offer"} />
+                  <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
+                  <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label={"Remove from Cart"} />
 
                   <Link to="/purchase">
                   <Buttons icon={<MonetizationOnIcon/>} label={"Buy"}/> {/*buy button */}
