@@ -39,6 +39,7 @@ export default function BasicGrid() {
         axios.get(API_URL)
             .then(response => {
                 setAsset(response.data);
+                console.log(response);
             })
             .catch(error => {
                 console.error("There was an error fetching data:", error);

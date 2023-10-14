@@ -65,16 +65,16 @@ def get_assets():
         return {"error": str(e)}
     
 @app.get("/productsearch/")
-def get_assets():
+def get_assets(asset_id):
     try:
         # Establish a database connection
         connection = mysql.connector.connect(**db_config)
-
+        id = asset_id
         # Create a cursor to execute SQL queries
         cursor = connection.cursor()
 
         # Define the SQL query to retrieve data (e.g., all assets)
-        query = "SELECT * FROM nft_site.asset WHERE category_ID = 2 ORDER BY Asset_ID"
+        query = f"SELECT * FROM nft_site.asset WHERE asset_ID = {id} ORDER BY Asset_ID"
 
         # Execute the SQL query
         cursor.execute(query)
