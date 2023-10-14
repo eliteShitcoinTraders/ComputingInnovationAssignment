@@ -155,10 +155,10 @@ function ResponsiveAppBar({ cartNum}) {/*Mui ResponsiveAppBar with a cart icon*/
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
-                        <Tooltip title="Open profile">
-                            <Link to="/profilepage">
+                        <Tooltip title="Login">
+                            <Link to="/login">
                             <IconButton sx={{ p: 0 }} onClick={handleOpenUserMenu}>
-                                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                                <Avatar alt="Avatar" />
                                 </IconButton>
                             </Link>
                         </Tooltip>

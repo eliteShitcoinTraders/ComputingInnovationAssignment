@@ -11,6 +11,7 @@ import Purchase from './purchase';
 import Profile from './profilepage';
 import ProductListing from './productListing';
 import Test from './test';
+import Login from './login';
 
 
 //React Router was used to route the pages together.
@@ -25,7 +26,7 @@ function App() {
                     <Route path="/profilepage" element={<Profile />} />
                     <Route path="/productListing" element={<ProductListing />} />
                     <Route path="/testing" element={<Test />} />
-
+                    <Route path="/login" element={<Login />} />
                 </Routes>
             </Router>
         </div>
