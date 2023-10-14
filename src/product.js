@@ -28,11 +28,13 @@ import axios from 'axios';
 import { useCart } from './CartContext.js';
 
 export default function BasicGrid() {
-  const Asset_ID = useParams();
+  
+  const numberobject = useParams();
+
   //Editing rn, Axios connection w/ asset table
     const [asset, setAsset] = useState([]);
     useEffect(() => {
-        const API_URL = 'http://127.0.0.1:8000/productsearch/';
+      const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
         axios.get(API_URL)
             .then(response => {
                 setAsset(response.data);
@@ -160,8 +162,8 @@ const rows = [
             <div>
               {/*image for our listing*/}
               <Image
-                src="https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80"
-                alt="YodaNFTImage"
+                src={asset.Img_Url}
+                alt={asset.Img_Url}
               />
             </div>
           </Item>
