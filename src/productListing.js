@@ -56,8 +56,8 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function BasicGrid() {
+    
     const [result, setResults] = React.useState([]);
-
     const [cardinfo, setCardinfo] = useState([]);
     useEffect(() => {
         const API_URL = 'http://127.0.0.1:8000/assets/';
