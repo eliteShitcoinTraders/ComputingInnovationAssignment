@@ -27,6 +27,8 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from './CartContext.js';
 
+
+
 export default function BasicGrid() {
   const Asset_ID = useParams();
   //Editing rn, Axios connection w/ asset table
@@ -143,7 +145,17 @@ const rows = [
   { id: 9, qty: '1', price: '$71', exp: '1 hour', from:'Madut' },
 ];//grid data for offers
 
-
+    const [yodainfo, setYoda] = useState([]);
+    useEffect(() => {
+        const API_URL = 'http://127.0.0.1:8000/yoda/';
+        axios.get(API_URL)
+            .then(response => {
+                setYoda(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching data:", error);
+            });
+    }, []);
 
 
   
