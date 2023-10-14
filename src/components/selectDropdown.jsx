@@ -20,7 +20,7 @@ export default function BasicSelect() {
       //used for the category when search
       <Box sx={{ minWidth: '120', maxWidth:'99.5%'}}>
           <FormControl fullWidth style={{ backgroundcolor: "blue" }} >
-              <InputLabel id="demo-simple-select-label">Currency</InputLabel>
+              <InputLabel id="demo-simple-select-label">Category</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
@@ -28,10 +28,10 @@ export default function BasicSelect() {
           label="Age"
           onChange={handleChange}
         >
-          <MenuItem value={1}>ETH</MenuItem>
-          <MenuItem value={2}>BTC</MenuItem>
-          <MenuItem value={3}>SOL</MenuItem>
-          <MenuItem value={4}>DOGE</MenuItem>
+          <MenuItem value={1}>Category 1</MenuItem>
+          <MenuItem value={2}>Category 2</MenuItem>
+          <MenuItem value={3}>Category 3</MenuItem>
+          <MenuItem value={4}>Category 4</MenuItem>
 
         </Select>
       </FormControl>

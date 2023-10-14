@@ -87,19 +87,37 @@ const containerStyles = {
 
 
 export default function BasicGrid() {/*header function*/
-
+//Notable Colection
     const [result, setResults] = React.useState([]);
-    const [cardinfo, setCardinfo] = useState([]);
+    const [yodainfo, setYoda] = useState([]);
     useEffect(() => {
-        const API_URL = 'http://127.0.0.1:8000/assets/';
+        const API_URL = 'http://127.0.0.1:8000/yoda/';
         axios.get(API_URL)
             .then(response => {
-                setCardinfo(response.data);
+                setYoda(response.data);
             })
             .catch(error => {
                 console.error("There was an error fetching data:", error);
             });
     }, []);
+
+    const [carinfo, setCar] = useState([]);
+    useEffect(() => {
+        const API_URL = 'http://127.0.0.1:8000/cars/';
+        axios.get(API_URL)
+            .then(response => {
+                setCar(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching data:", error);
+            });
+    }, []);
+
+    
+
+
+
+    
     return (
         <Box sx={{ flexGrow: 1 }}>
             <Grid container spacing={2} >
@@ -117,7 +135,7 @@ export default function BasicGrid() {/*header function*/
 
                 <Grid item xs={12} sm={12} md={12}> {/*Image Slide show*/}
                     <div style={containerStyles}>
-                        {cardinfo && cardinfo.length > 0 && <ImageSlider slides={cardinfo} />}
+                        {yodainfo && yodainfo.length > 0 && <ImageSlider slides={yodainfo} />}
 
 
                         </div>
@@ -160,14 +178,14 @@ export default function BasicGrid() {/*header function*/
 
                 </Grid>
 
-                <Grid item xs={12} sm={6} md={4}>{/*notable row */}
+                <Grid item xs={12} sm={12} md={12}>{/*notable row */}
                     <div
 
                             style={headerStyle}
                         >Notable Collection</div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                        <NotableRow cardinfo={cardinfo} />
+                        <NotableRow cardinfo={yodainfo} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>{/*Top Collector Buys Today row */}
                         <div
@@ -175,7 +193,7 @@ export default function BasicGrid() {/*header function*/
                         >Top Collector Buys Today</div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                        <NotableRow cardinfo={cardinfo} />
+                        <NotableRow cardinfo={carinfo} />
                 </Grid>
                 <Grid item xs={12} sm={6} md={4}>{/*Trending in Art row*/}
                         <div
