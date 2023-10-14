@@ -1,8 +1,11 @@
 {
   "ExpandedNodes": [
     "",
+    "\\contracts",
+    "\\Database",
     "\\fastapi",
-    "\\src\\components\\css"
+    "\\migrations",
+    "\\src"
   ],
   "SelectedNode": "\\fastapi",
   "PreviewInSolutionExplorer": false
