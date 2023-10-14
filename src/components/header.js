@@ -23,7 +23,7 @@ import { Link } from 'react-router-dom';
 import { useCart } from '../CartContext';
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];//giving header options value
-const settings = ['Settings', 'Profile', 'Logout'];//profile options
+//const settings = ['Settings', 'Profile', 'Logout'];//profile options
 
 const StyledBadge = styled(Badge)(({ theme }) => ({
     '& .MuiBadge-badge': {
@@ -185,14 +185,15 @@ function ResponsiveAppBar({}) {/*Mui ResponsiveAppBar with a cart icon*/
                                 vertical: 'top',
                                 horizontal: 'right',
                             }}
-                            open={Boolean(anchorElUser)}
-                            onClose={handleCloseUserMenu}
+                            
                         >
-                            {settings.map((setting) => (
+                           {/*open={Boolean(anchorElUser)}
+                            onClose={handleCloseUserMenu}
+                            {settings.map((/setting) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
                                     <Typography textAlign="center">{setting}</Typography>
                                 </MenuItem>
-                            ))}
+                           ))} */}
                         </Menu>
                     </Box>
                 </Toolbar>
