@@ -29,10 +29,7 @@ import { useCart } from './CartContext.js';
 
 export default function BasicGrid() {
   const Asset_ID = useParams();
-
-  //Editing rn, Axios connection w/ asset table 
-    const [result, setResults] = React.useState([]);
-
+  //Editing rn, Axios connection w/ asset table
     const [asset, setAsset] = useState([]);
     useEffect(() => {
         const API_URL = 'http://127.0.0.1:8000/productsearch/';
