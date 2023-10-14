@@ -89,6 +89,7 @@ const containerStyles = {
 export default function BasicGrid() {/*header function*/
 //Notable Colection
     const [result, setResults] = React.useState([]);
+
     const [yodainfo, setYoda] = useState([]);
     useEffect(() => {
         const API_URL = 'http://127.0.0.1:8000/yoda/';
@@ -113,7 +114,18 @@ export default function BasicGrid() {/*header function*/
             });
     }, []);
 
-    
+    const [animalinfo, setAnimals] = useState([]);
+    useEffect(() => {
+        const API_URL = 'http://127.0.0.1:8000/animals/';
+        axios.get(API_URL)
+            .then(response => {
+                setAnimals(response.data);
+            })
+            .catch(error => {
+                console.error("There was an error fetching data:", error);
+            });
+    }, []);
+
 
 
 
@@ -201,7 +213,7 @@ export default function BasicGrid() {/*header function*/
                         >Trending in Art</div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                        <NotableRow cardinfo={cardinfo} />
+                        <NotableRow cardinfo={animalinfo} />
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>{/*footer*/}
                         <FooterMain />
