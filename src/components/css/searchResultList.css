@@ -2,11 +2,14 @@
     name: sothearak heng
     group: g-99
 */
-.result-list{
-    width:100%;
-    background-color:white;
-    display:flex;
-    flex-direction:column;
-    border-radius:4px;
-    margin-top:1rem;
+
+.result-list {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+    margin-top: 1rem;
+    height: 400px; 
+    overflow-y: auto;
 }
