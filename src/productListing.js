@@ -79,7 +79,6 @@ export default function BasicGrid() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} > {/*search functionalities*/}
                     <hr></hr>
-                    < SeclectDropDown />
 
                     <SearchBar setResults={setResults} />
                     <SearchResultList result={result} />
