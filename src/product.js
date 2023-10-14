@@ -50,6 +50,8 @@ export default function BasicGrid() {
         console.error("There was an error fetching data:", error);
       });
   }, []);
+    const dataString = encodeURIComponent(JSON.stringify(asset));
+
   //End of Axios connection 
   asset.map((asset) => {
     Asset_ID = asset.Asset_ID
@@ -203,7 +205,7 @@ export default function BasicGrid() {
                 <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
                 <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label={"Remove from Cart"} />
 
-                <Link to="/purchase">
+                <Link to={`/purchase?data=${dataString}`}>
                   <Buttons icon={<MonetizationOnIcon />} label={"Buy"} /> {/*buy button */}
                 </Link>
 

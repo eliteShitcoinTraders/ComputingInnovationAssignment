@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Query
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
 from typing import List
@@ -216,5 +216,80 @@ def get_assets():
     except Exception as e:
         return {"error": str(e)}
 
+@app.get("/Allcategory/")
+def get_assets():
+    try:
+        # Establish a database connection
+        connection = mysql.connector.connect(**db_config)
 
+        # Create a cursor to execute SQL queries
+        cursor = connection.cursor()
+
+        # Define the SQL query to retrieve data (e.g., all assets)
+        query = "SELECT category FROM nft_site.category"
+
+        # Execute the SQL query
+        cursor.execute(query)
+
+        # Fetch all the rows    
+        result = cursor.fetchall()
+
+        # Convert the result to a list of dictionaries
+        assets = [dict(zip(cursor.column_names, row)) for row in result]
+
+        # Close the cursor and the database connection
+        cursor.close()
+        connection.close()
+
+        return assets
+
+    except Exception as e:
+        return {"error": str(e)}
+
+
+
+
+
+@app.get("/search/")
+def search_assets(category: int =  None, query: str = None):
+    try:
+        # Establish a database connection
+        connection = mysql.connector.connect(**db_config)
+
+        # Create a cursor to execute SQL queries
+        cursor = connection.cursor()
+
+        # Define the base SQL query to retrieve data
+        query_sql = "SELECT * FROM nft_site.asset WHERE 1"
+
+        # Add conditions based on category and query parameters if they are provided
+        if category is not None:
+            query_sql += f" AND category_ID = {category+1}"
+
+        if query is not None:
+            query_sql += f" AND Name LIKE '%{query}%'"
+
+        # Order the results by Asset_ID
+        query_sql += " ORDER BY Asset_ID"
+
+        print("Generated SQL Query:", query_sql)
+        print("Category:", category)
+        print("Query:", query)
+        # Execute the SQL query
+        cursor.execute(query_sql)
+
+        # Fetch all the rows
+        result = cursor.fetchall()
+
+        # Convert the result to a list of dictionaries
+        assets = [dict(zip(cursor.column_names, row)) for row in result]
+
+        # Close the cursor and the database connection
+        cursor.close()
+        connection.close()
+
+        return assets
+
+    except Exception as e:
+        return {"error": str(e)}
 

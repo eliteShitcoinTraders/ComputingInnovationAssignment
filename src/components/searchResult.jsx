@@ -8,7 +8,6 @@ import ScrollCard from './scrollCard.jsx';
 
 const SearchResult = ({ result }) => {
 
-  console.log(result);
 
   return (
     <div className="resultColumn">

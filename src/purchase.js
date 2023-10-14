@@ -13,6 +13,7 @@ import { Text } from './components/textbox.js';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import Inputs from './components/inputfield.js';
 import AlertDialog from './components/popup.js';
+import { useLocation } from 'react-router-dom';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -30,7 +31,20 @@ const content = (
 );
 
 export default function AutoGrid() {
+    const { search } = useLocation();
+    const params = new URLSearchParams(search);
+    const dataString = params.get('data');
+    const data = JSON.parse(decodeURIComponent(dataString));
+    var Asset_ID = 0
+    var Category_ID = 0
+    var Price = 0
+    data.map((data) => {
+        Asset_ID = data.Asset_ID
+        Category_ID = data.category_ID
+        Price = data.Price
 
+    })
+    console.log(Asset_ID)
   return (
     
     <Box sx={{ flexGrow: 1 }}>
@@ -41,8 +55,8 @@ export default function AutoGrid() {
       
         <Grid item xs={6}>
           <Item>
-          <h1>Checkout</h1>
-            <Text texttitle={<h2>Subtotal: $5,000</h2>} content={content}/> {/*subtotal prompts for user */}
+                      <h1>Checkout</h1>
+                      <Text texttitle={<h2>Subtotal: {Price} ETH</h2>} content={content} /> {/*subtotal prompts for user */}
             <Inputs/>
             <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>{/*popup imported from popup */}            
           </Item>
