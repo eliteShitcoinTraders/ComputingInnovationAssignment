@@ -44,7 +44,6 @@ export default function BasicGrid() {
             });
     }, []);
 //End of Axios connection 
-console.log(asset[0].category_ID);
   // retrieves cartcount
 const { cartCount, addToCart, decrementCart } = useCart();
   
