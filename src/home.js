@@ -213,7 +213,7 @@ export default function BasicGrid() {/*header function*/
                         >Trending in Art</div>
                 </Grid>
                 <Grid item xs={12} sm={12} md={12}>
-                        <NotableRow cardinfo={animalinfo} />
+                        <NotableRow cardinfo={animalinfo} /> 
                 </Grid>
 
 
