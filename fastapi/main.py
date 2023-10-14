@@ -4,8 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from typing import List
 from fastapi.responses import HTMLResponse
 import mysql.connector
-from flask import Flask
-
 
 app = FastAPI()
 
@@ -15,7 +13,7 @@ origins = ["*"]
 db_config = {
     "host": "localhost",
     "user": "root",
-    "password": "data123", #password needs to be changed
+    "password": "123456789", #password needs to be changed
     "database": "nft_site"
 }
 
@@ -96,6 +94,37 @@ def get_assets(Asset_ID: str):
 
     except Exception as e:
         return {"error": str(e)}
+
+
+@app.get("/category/{Category_ID}")
+def get_assets(Category_ID: str):
+    try:
+        # Establish a database connection
+        connection = mysql.connector.connect(**db_config)
+
+        # Create a cursor to execute SQL queries
+        cursor = connection.cursor()
+
+        # Define the SQL query to retrieve data based on the provided Asset_ID
+        query = f"SELECT category FROM nft_site.category WHERE category_ID = {Category_ID}"
+
+        # Execute the SQL query
+        cursor.execute(query)
+
+        # Fetch all the rows    
+        result = cursor.fetchall()
+
+
+
+        # Close the cursor and the database connection
+        cursor.close()
+        connection.close()
+
+        return result
+
+    except Exception as e:
+        return {"error": str(e)}
+
 
 @app.get("/yoda/")
 def get_assets():

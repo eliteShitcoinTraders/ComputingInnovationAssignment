@@ -35,11 +35,11 @@ export default function BasicGrid() {
   var Img_Url = 0
   var Price = 0
   var Mint_price = 0
-
+  var Category = ""
   const numberobject = useParams();
 
   //Editing rn, Axios connection w/ asset table
-  const [asset, setAsset] = useState([]);
+    const [asset, setAsset] = useState([]);
   useEffect(() => {
     const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
     axios.get(API_URL)
@@ -53,7 +53,7 @@ export default function BasicGrid() {
   //End of Axios connection 
   asset.map((asset) => {
     Asset_ID = asset.Asset_ID
-    Category_ID = asset.Category_ID 
+    Category_ID = asset.category_ID 
     Name = asset.Name
     Mint_state = asset.Mint_state
     Img_Url = asset.Img_Url
@@ -61,7 +61,10 @@ export default function BasicGrid() {
     Mint_price = asset.Mint_price
     
   })
-  console.log(Asset_ID)
+    console.log(Asset_ID)
+    console.log(Category_ID)
+
+
 
   // retrieves cartcount
   const { cartCount, addToCart, decrementCart } = useCart();
@@ -78,15 +81,15 @@ export default function BasicGrid() {
   const content = (
     <div style={{ textAlign: 'left' }}>
       {`This collectable nft created nftcreator is a part of 
-    the 'cool' collection. The artist is well known in the community 
+    the many existing collections such as cars, yodas and the animal collection. The artists are well known in the community 
     providing enthusiasts with well thought out and creative pieces.
     `}
     </div>
   );// content description
 
   const info = (
-    <div style={{ textAlign: 'left' }}>
-      Collection: insert category <br /> Product by: nftcreater <br /> Owned by: nfttrader123
+      <div style={{ textAlign: 'left' }}>
+          Collection: {Category_ID}  <br /> Owned by: nfttrader123
     </div>
   ); // nft info and number
 
@@ -100,7 +103,7 @@ export default function BasicGrid() {
   const columns = [
     {
       field: 'price',
-      headerName: 'Price AUD',
+      headerName: 'Price ETH',
       width: 150,
     },
     {
@@ -125,7 +128,7 @@ export default function BasicGrid() {
   const col2 = [
     {
       field: 'price',
-      headerName: 'Price AUD',
+      headerName: 'Price ',
       width: 150,
     },
     {
@@ -147,19 +150,19 @@ export default function BasicGrid() {
     },
   ]; //colmun headings
 
-  const rows2 = [
-    { id: 1, qty: '12', price: '$10', exp: '10 hours', from: 'nfttrader123' },
+    const rows2 = [
+        { id: 1, qty: '1', price: Price, exp: '10 hours', from: 'nfttrader123' },
   ] //grid data for listings
 
   const rows = [
-    { id: 1, qty: '12', price: '$10', exp: '10 hours', from: 'Joe' },
-    { id: 2, qty: '2', price: '$21', exp: '4 days', from: 'Smoe1' },
-    { id: 3, qty: '2', price: '$45', exp: '3 days', from: 'Boe3' },
-    { id: 5, qty: '1', price: '$48', exp: '16 days', from: 'Xtoe' },
-    { id: 6, qty: '0', price: '$200', exp: '21 hours', from: 'BrO' },
-    { id: 7, qty: '8', price: '$29', exp: '15 days', from: 'SOE' },
-    { id: 8, qty: '5', price: '$98', exp: '13 hours', from: 'Moey' },
-    { id: 9, qty: '1', price: '$71', exp: '1 hour', from: 'Madut' },
+      { id: 1, qty: '1', price: '0.10', exp: '10 hours', from: 'Joe' },
+      { id: 2, qty: '1', price: '0.21', exp: '4 days', from: 'Smoe1' },
+      { id: 3, qty: '1', price: '0.45', exp: '3 days', from: 'Boe3' },
+      { id: 5, qty: '1', price: '0.48', exp: '16 days', from: 'Xtoe' },
+      { id: 6, qty: '1', price: '0.200', exp: '21 hours', from: 'BrO' },
+      { id: 7, qty: '1', price: '0.29', exp: '15 days', from: 'SOE' },
+      { id: 8, qty: '1', price: '0.98', exp: '13 hours', from: 'Moey' },
+      { id: 9, qty: '1', price: '0.71', exp: '1 hour', from: 'Madut' },
   ];//grid data for offers
 
 
@@ -190,8 +193,8 @@ export default function BasicGrid() {
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
-          <Item>
-            <Text texttitle={<h1>NFT #12092</h1>} icon={<LocalFireDepartmentIcon />} content={info} />
+                  <Item>
+                      <Text texttitle={<h1>{Name}</h1>} icon={<LocalFireDepartmentIcon />} content={info} />
           </Item>
           <Item>
 
