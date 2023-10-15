@@ -14,9 +14,6 @@ app = FastAPI()
 
 
 
-<<<<<<< HEAD
-    time.sleep(15)
-=======
 
 @app.get("/")
 async def funcTest1():
@@ -96,4 +93,3 @@ async def funcTest1():
 
     
     return "Hello, this is contract deploy preocess"
->>>>>>> ee9291d9130271055920a5f9524211f9b3d7d2f6

@@ -63,13 +63,11 @@ export default function BasicGrid() {
     Mint_price = asset.Mint_price
 
   })
-  console.log(Asset_ID)
-  console.log(Category_ID)
 
 
 
   // retrieves cartcount
-  const { cartCount, addToCart, decrementCart } = useCart();
+  const { cartCount, addToCart, decrementCart} = useCart();
 
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -91,6 +89,7 @@ export default function BasicGrid() {
 
   const info = (
     <div style={{ textAlign: 'left' }}>
+      Asset ID: {Asset_ID} <br />
       Collection: {Category_ID}  <br /> Owned by: nfttrader123
     </div>
   ); // nft info and number

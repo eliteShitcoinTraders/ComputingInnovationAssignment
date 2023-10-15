@@ -73,10 +73,13 @@ export default function AutoGrid() {
 
   return (
     
-    
+    <div>
+      <div>
+      <NaviBar/>
+    </div>
     <Box sx={{ flexGrow: 1 }}>
       <Grid item xs={12} sm={4} md={8}>
-          <Item><NaviBar/> </Item>
+         
       </Grid>
       <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>{/*center the grid */}
       
@@ -85,7 +88,6 @@ export default function AutoGrid() {
           <h1>Cart</h1>
             <Text texttitle={<h2>Total: GET PRICE</h2>} content={content}/> {/*subtotal prompts for user */}
             <DataGridDemo columns={col} rows={rows} pageSize={2} height={350}></DataGridDemo>
-            
             <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>{/*popup imported from popup */}            
           </Item>
         </Grid>
@@ -96,6 +98,7 @@ export default function AutoGrid() {
         <Item><Footer/></Item>
       </Grid>
     </Box>
+    </div>
   );
 
   
