@@ -25,6 +25,7 @@ import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { useCart } from './CartContext.js';
+import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 export default function BasicGrid() {
   var Asset_ID = 0
@@ -38,7 +39,7 @@ export default function BasicGrid() {
   const numberobject = useParams();
 
   //Editing rn, Axios connection w/ asset table
-    const [asset, setAsset] = useState([]);
+  const [asset, setAsset] = useState([]);
   useEffect(() => {
     const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
     axios.get(API_URL)
@@ -49,26 +50,24 @@ export default function BasicGrid() {
         console.error("There was an error fetching data:", error);
       });
   }, []);
-    const dataString = encodeURIComponent(JSON.stringify(asset));
+  const dataString = encodeURIComponent(JSON.stringify(asset));
 
   //End of Axios connection 
   asset.map((asset) => {
     Asset_ID = asset.Asset_ID
-    Category_ID = asset.category_ID 
+    Category_ID = asset.category_ID
     Name = asset.Name
     Mint_state = asset.Mint_state
     Img_Url = asset.Img_Url
     Price = asset.Price
     Mint_price = asset.Mint_price
-    
+
   })
-    console.log(Asset_ID)
-    console.log(Category_ID)
 
 
 
   // retrieves cartcount
-  const { cartCount, addToCart, decrementCart } = useCart();
+  const { cartCount, addToCart, decrementCart} = useCart();
 
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -89,8 +88,9 @@ export default function BasicGrid() {
   );// content description
 
   const info = (
-      <div style={{ textAlign: 'left' }}>
-          Collection: {Category_ID}  <br /> Owned by: nfttrader123
+    <div style={{ textAlign: 'left' }}>
+      Asset ID: {Asset_ID} <br />
+      Collection: {Category_ID}  <br /> Owned by: nfttrader123
     </div>
   ); // nft info and number
 
@@ -151,19 +151,19 @@ export default function BasicGrid() {
     },
   ]; //colmun headings
 
-    const rows2 = [
-        { id: 1, qty: '1', price: Price, exp: '10 hours', from: 'nfttrader123' },
+  const rows2 = [
+    { id: 1, qty: '1', price: Price, exp: '10 hours', from: 'nfttrader123' },
   ] //grid data for listings
 
   const rows = [
-      { id: 1, qty: '1', price: '0.10', exp: '10 hours', from: 'Joe' },
-      { id: 2, qty: '1', price: '0.21', exp: '4 days', from: 'Smoe1' },
-      { id: 3, qty: '1', price: '0.45', exp: '3 days', from: 'Boe3' },
-      { id: 5, qty: '1', price: '0.48', exp: '16 days', from: 'Xtoe' },
-      { id: 6, qty: '1', price: '0.200', exp: '21 hours', from: 'BrO' },
-      { id: 7, qty: '1', price: '0.29', exp: '15 days', from: 'SOE' },
-      { id: 8, qty: '1', price: '0.98', exp: '13 hours', from: 'Moey' },
-      { id: 9, qty: '1', price: '0.71', exp: '1 hour', from: 'Madut' },
+    { id: 1, qty: '1', price: '0.10', exp: '10 hours', from: 'Joe' },
+    { id: 2, qty: '1', price: '0.21', exp: '4 days', from: 'Smoe1' },
+    { id: 3, qty: '1', price: '0.45', exp: '3 days', from: 'Boe3' },
+    { id: 5, qty: '1', price: '0.48', exp: '16 days', from: 'Xtoe' },
+    { id: 6, qty: '1', price: '0.200', exp: '21 hours', from: 'BrO' },
+    { id: 7, qty: '1', price: '0.29', exp: '15 days', from: 'SOE' },
+    { id: 8, qty: '1', price: '0.98', exp: '13 hours', from: 'Moey' },
+    { id: 9, qty: '1', price: '0.71', exp: '1 hour', from: 'Madut' },
   ];//grid data for offers
 
 
@@ -194,16 +194,18 @@ export default function BasicGrid() {
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
-                  <Item>
-                      <Text texttitle={<h1>{Name}</h1>} icon={<LocalFireDepartmentIcon />} content={info} />
+          <Item>
+            <Text texttitle={<h1>{Name}</h1>} icon={<LocalFireDepartmentIcon />} content={info} />
           </Item>
           <Item>
 
             <div>
-              <Stack direction="row" spacing={2} >
-                <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
-                <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label={"Remove from Cart"} />
-
+              <Stack direction="row" spacing={2}>
+                <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/* Button to add to cart */}
+                <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label="Remove from Cart" /> {/* Button to remove from cart */}
+                <Link to={`/purchase?data=${dataString}`}>
+                  <Buttons icon={<MonetizationOnIcon />} label="Buy" /> {/* Buy button */}
+                </Link>
               </Stack>
             </div>
           </Item>
