@@ -15,8 +15,6 @@ import SearchResultList from './components/searchResultList.jsx';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 
-
-
 const header = { headerOne: "Mint Price", headerTwo: "Current Price" };
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -55,7 +53,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 
 export default function BasicGrid() {
-    
+
     const [result, setResults] = React.useState([]);
     const [cardinfo, setCardinfo] = useState([]);
     useEffect(() => {
