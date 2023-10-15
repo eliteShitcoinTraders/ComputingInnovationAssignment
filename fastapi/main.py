@@ -13,7 +13,7 @@ origins = ["*"]
 db_config = {
     "host": "localhost",
     "user": "root",
-    "password": "data123", #password needs to be changed
+    "password": "123456789", #password needs to be changed
     "database": "nft_site"
 }
 
@@ -298,3 +298,31 @@ def search_assets(category: int =  None, query: str = None):
     except Exception as e:
         return {"error": str(e)}
 
+
+
+
+        # interacting with smart contract
+
+class TransactionReceipt(BaseModel):
+    transactionHash: str
+    transactionIndex: int
+    blockHash: str
+    blockNumber: int
+    fromAddress: str  # Address of the sender
+    toAddress: str  # Address of the receiver (might be None for contract creation transactions)
+    cumulativeGasUsed: int
+    gasUsed: int
+    contractAddress: str = None  # Address of contract created, if the transaction was a contract creation
+    logs: list = []  # Array of log objects, which are generated during the execution of EVM byte code
+    status: bool  # Success status of the transaction: 'true' if no errors, 'false' otherwise
+    logsBloom: str  # Bloom filter for light client to quickly retrieve related logs
+    # Add other fields as needed
+
+
+@app.post("/transaction-confirmed/")
+async def transaction_confirmed(receipt: TransactionReceipt):
+    # Here, you can process the transaction receipt as needed.
+    # For example, you can log it, store in a database, etc.
+    
+    print(receipt)  # Just printing the receipt for demonstration purposes
+    return {"status": "success"}
