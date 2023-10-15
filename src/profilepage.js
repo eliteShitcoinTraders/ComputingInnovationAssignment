@@ -6,14 +6,13 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import profilePicture from './components/img/eugene.webp';
 import { Typography } from '@mui/material';
-import ImageList from '@mui/material/ImageList';
-import ImageListItem from '@mui/material/ImageListItem';
 import NaviBar from './components/header.js';
 import Grid from '@mui/material/Grid';
 import TransacCard from './components/transactioncard';
-import { Item } from './home.js'
 import Footer from './components/footer.jsx';
 import axios from 'axios';
+import SearchBar from './components/searchBar.jsx';
+import SearchResultList from './components/searchResultList.jsx';
 
 
 /*
@@ -23,10 +22,22 @@ E.g. App from **url**
 2. Circle Pfp from https://www.youtube.com/watch?v=xBDa6OzbF3o&ab_channel=LirsTechTips
 3. Profile Box from https://mui.com/material-ui/react-box/
 4. ImageList from https://mui.com/material-ui/react-image-list/#system-StandardImageList.js
-5. Toggle from https://www.youtube.com/watch?v=5CTFTDpHHto&t=402s&ab_channel=TheCodeAngle
 */
 
-function ProfilePage() {
+export default function ProfilePage() {
+  const [result, setResults] = React.useState([]);
+  const [assetinfo, setAssetInfo] = useState();
+  useEffect(() => {
+      const API_URL = 'http://127.0.0.1:8000/users/';
+      axios.get(API_URL)
+          .then(response => {
+            setAssetInfo(response.data);
+          })
+          .catch(error => {
+              console.error("There was an error fetching data:", error);
+          });
+  }, []);
+
   //Change the styles of the page.
   const pfpBackground = {
     //Change background image || Reference 1.
@@ -40,21 +51,6 @@ function ProfilePage() {
     alignItems: "center",
     justifyContent: "center",
   };
-  //Toggle button || Reference 5.
-  const [toggle, setToggle] = useState(true)
-  const ButtonText = toggle ? "Inventory" : "Transaction History";
-
-  const [userinfo, setUser] = useState([]);
-  useEffect(() => {
-      const API_URL = 'http://127.0.0.1:8000/users/';
-      axios.get(API_URL)
-          .then(response => {
-              setUser(response.data);
-          console.log(response)}) 
-          .catch(error => {
-              console.error("There was an error fetching data:", error);
-          });
-  }, []);
 
 
 
@@ -71,64 +67,16 @@ function ProfilePage() {
         { url: "https://images.unsplash.com/photo-1664202925603-1d2bf7f190fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2680&q=80", name: "Yoda4", date: "09/3/2017 ", price: "3 " },
         { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017 ", price: "5 " },
         { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017 ", price: "9 " }
-
     ];
-
-  const itemData = [
-    {
-      img: 'https://images.unsplash.com/photo-1551963831-b3b1ca40c98e',
-      title: 'Breakfast',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1551782450-a2132b4ba21d',
-      title: 'Burger',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1522770179533-24471fcdba45',
-      title: 'Camera',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c',
-      title: 'Coffee',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1533827432537-70133748f5c8',
-      title: 'Hats',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1558642452-9d2a7deb7f62',
-      title: 'Honey',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6',
-      title: 'Basketball',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1518756131217-31eb79b20e8f',
-      title: 'Fern',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1597645587822-e99fa5d45d25',
-      title: 'Mushrooms',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1567306301408-9b74779a11af',
-      title: 'Tomato basil',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1471357674240-e1a485acb3e1',
-      title: 'Sea star',
-    },
-    {
-      img: 'https://images.unsplash.com/photo-1589118949245-7d38baf380d6',
-      title: 'Bike',
-    },
-  ];
 
   return (
     <div style={pfpBackground}>
       < NaviBar />
       <div className="fpInfoAndPic">
+      <hr></hr>
+                   <SearchBar setResults={setResults} />
+                   <SearchResultList result={result} />
+                   <hr></hr>
         <div style={{
           //Flexboxes the page and controls horizontal movement
           display: "flex",
@@ -164,12 +112,10 @@ function ProfilePage() {
                 overflow: "hidden",
                 textAlign: "center",
               }}>
-                User:{userinfo[0].User_Name}
+                User: {}
               </Typography>
             </Box>
           </div>
-          {/* Button to toggle Divs*/}
-          <button onClick={() => setToggle(!toggle)} className="btn-toggle">{ButtonText}</button>
         </div>
         {/* End of Div for Pfp and Box. */}
         {/* Code for the line*/}
@@ -181,28 +127,9 @@ function ProfilePage() {
           opacity: '0.7'
         }}></hr>
         </div>
-
-        <div style={inventoryBackground}>
-          {/*Uses the useState hook*/}
-          {/* Image List w/ Toggle Feature || Reference 4. */}
-          {toggle && (
-            <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img}>
-                  <img
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          )}
+          
           {/* Transaction History*/}
           <div style={inventoryBackground}>
-                  {!toggle && (
-
               <Grid
                 container
                 direction="row"
@@ -232,15 +159,8 @@ function ProfilePage() {
                     <TransacCard NftData={transactionData} />
                 </Grid>
               </Grid>
-
-            )}
         </div>
+        <Footer/>
         </div>
-        {/*End of Divs for the Inventory and Image*/}
-      <Item><Footer/></Item>
-    </div>
   );
 }
-
-export default ProfilePage;
-
