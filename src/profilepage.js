@@ -41,11 +41,7 @@ function ProfilePage() {
     alignItems: "center",
     justifyContent: "center",
   };
-  //Toggle button || Reference 5.
-  const [toggle, setToggle] = useState(true)
-  const ButtonText = toggle ? "Inventory" : "Transaction History";
-
-
+  
   const [userinfo, setUser] = useState([]);
     useEffect(() => {
         const API_URL = 'http://127.0.0.1:8000/users/';
@@ -164,12 +160,13 @@ function ProfilePage() {
                 overflow: "hidden",
                 textAlign: "center",
               }}>
-                User: {userinfo.User_Name}
+                User: {userinfo[0].User_Name}
               </Typography>
             </Box>
           </div>
           {/* Button to toggle Divs*/}
-          <button onClick={() => setToggle(!toggle)} className="btn-toggle">{ButtonText}</button>
+          <p>Transaction History</p>
+          
         </div>
         {/* End of Div for Pfp and Box. */}
         {/* Code for the line*/}
@@ -185,24 +182,10 @@ function ProfilePage() {
         <div style={inventoryBackground}>
           {/*Uses the useState hook*/}
           {/* Image List w/ Toggle Feature || Reference 4. */}
-          {toggle && (
-            <ImageList sx={{ width: 800, height: 400, borderRadius: "10px" }} cols={3} rowHeight={164}>
-              {itemData.map((item) => (
-                <ImageListItem key={item.img}>
-                  <img
-                    src={`${item.img}?w=164&h=164&fit=crop&auto=format`}
-                    srcSet={`${item.img}?w=164&h=164&fit=crop&auto=format&dpr=2 2x`}
-                    alt={item.title}
-                    loading="lazy"
-                  />
-                </ImageListItem>
-              ))}
-            </ImageList>
-          )}
+          
           {/* Transaction History*/}
           <div style={inventoryBackground}>
-                  {!toggle && (
-
+                 
               <Grid
                 container
                 direction="row"
@@ -233,7 +216,7 @@ function ProfilePage() {
                 </Grid>
               </Grid>
 
-            )}
+          
         </div>
         </div>
         {/*End of Divs for the Inventory and Image*/}
