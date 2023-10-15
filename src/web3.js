@@ -5,12 +5,12 @@ import ContractData from './Transaction.json'; // Make sure the path is correct
 
 const web3 = new Web3("http://localhost:7545");
 
-const ganacheAccount = {
-    address: "0xBDa40Ae46877164F9BD16AD63C08d2Bdf2A53193",
-    privateKey: "0x3eb5771fe77ccd722f8cf13002a2255bf895a8127802a83a9430967cb1387664"
+const ganacheAccount = { //input different user based on your ganache local server
+    address: "0x846BEdD91df6cB8e13C1460f3513155aBD0D2971",
+    privateKey: "0x8f4ffabd65924e82add1caccea36825f1b3ca22b7ca97702e35ab8b34d97bbd6"
 };
 
-const contractAddress = "0xC75143B48F6C95D252F1dD431CeDA9fb1c3ca963";
+const contractAddress = "0xC75143B48F6C95D252F1dD431CeDA9fb1c3ca963";//check local server for the deployed contract address
 const YourContractABI = ContractData.abi;
 const contract = new web3.eth.Contract(YourContractABI, contractAddress);
 

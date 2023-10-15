@@ -51,18 +51,20 @@ export default function ProfilePage() {
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <Grid container spacing={2}>
-                        {assetData.assetIds.map((assetId, id) => (
-                            <Grid item xs={12} sm={12} md={4} key={id} style={gridItemStyle}>
-                                <div>
-                                    <p>Asset ID: {assetId}</p>
-                                    <p>Time: {formatTimestamp(assetData.purchaseTimes[id])}</p>
-                                    {/* Handle prices when it's undefined */}
-                                    <p>Price: {assetData.itemPrices ? assetData.itemPrices[id] : 'N/A'} ETH</p>
-                                </div>
-                            </Grid>
-                        ))}
-                    </Grid>
+                        <Grid container spacing={2}>
+                            {assetData.assetIds.map((assetId, id) => (
+                                assetId !== "0" && (
+                                    <Grid item xs={12} sm={12} md={4} key={id} style={gridItemStyle}>
+                                        <div>
+                                            <p>Asset ID: {assetId}</p>
+                                            <p>Time: {formatTimestamp(assetData.purchaseTimes[id])}</p>
+                                            {/* Handle prices when it's undefined */}
+                                            <p>Price: {assetData.itemPrices ? assetData.itemPrices[id] : 'N/A'} ETH</p>
+                                        </div>
+                                    </Grid>
+                                )
+                            ))}
+                        </Grid>
                 )}
             </div>
             <Footer />
