@@ -10,8 +10,6 @@ import FooterMain from './components/footer.jsx';
 import './components/css/itemcard.css';
 import axios from 'axios';
 
-
-{/* 1. CSS Styles */}
 const containerStyles = {
     width: "100%",
     height: "700px",
@@ -26,47 +24,50 @@ const headerStyle = {
     marginTop: "10px",
 };
 
-{/*2. Axios Connections to DB */}
 export default function BasicGrid() {
-    // Notable Collection
-    const [result, setResults] = React.useState([]);
+    console.log("BasicGrid component rendered");
 
-    // Fetch Yoda data
+    const [result, setResults] = React.useState([]);
     const [yodainfo, setYoda] = useState([]);
+    const [carinfo, setCar] = useState([]);
+    const [animalinfo, setAnimals] = useState([]);
+
     useEffect(() => {
+        console.log("Fetching Yoda data...");
         const API_URL = 'http://127.0.0.1:8000/yoda/';
         axios.get(API_URL)
             .then(response => {
+                console.log("Yoda data fetched:", response.data);
                 setYoda(response.data);
             })
             .catch(error => {
-                console.error("There was an error fetching data:", error);
+                console.error("Error fetching Yoda data:", error);
             });
     }, []);
 
-    // Fetch Cars data
-    const [carinfo, setCar] = useState([]);
     useEffect(() => {
+        console.log("Fetching Cars data...");
         const API_URL = 'http://127.0.0.1:8000/cars/';
         axios.get(API_URL)
             .then(response => {
+                console.log("Cars data fetched:", response.data);
                 setCar(response.data);
             })
             .catch(error => {
-                console.error("There was an error fetching data:", error);
+                console.error("Error fetching Cars data:", error);
             });
     }, []);
 
-    // Fetch Animals data
-    const [animalinfo, setAnimals] = useState([]);
     useEffect(() => {
+        console.log("Fetching Animals data...");
         const API_URL = 'http://127.0.0.1:8000/animals/';
         axios.get(API_URL)
             .then(response => {
+                console.log("Animals data fetched:", response.data);
                 setAnimals(response.data);
             })
             .catch(error => {
-                console.error("There was an error fetching data:", error);
+                console.error("Error fetching Animals data:", error);
             });
     }, []);
 
