@@ -24,6 +24,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
+{/* 1. Initializing variables needed for product page */}
 export default function BasicGrid() {
   var Asset_ID = 0
   var Category_ID = 0
@@ -35,6 +36,7 @@ export default function BasicGrid() {
   var Category = ""
   const numberobject = useParams();
 
+  {/* 2. Pulling from Axios using URL AssetID */}
   const [asset, setAsset] = useState([]);
   useEffect(() => {
     const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
@@ -49,6 +51,7 @@ export default function BasicGrid() {
   }, []);
   const dataString = encodeURIComponent(JSON.stringify(asset));
 
+  {/* 3. Mapping said returning Axios */}
   asset.map((asset) => {
     Asset_ID = asset.Asset_ID
     Category_ID = asset.category_ID
