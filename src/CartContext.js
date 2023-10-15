@@ -1,12 +1,10 @@
 import React, { createContext, useContext, useState } from 'react';
 
 const CartContext = createContext();
-const AssetID = createContext();
 
 export const CartProvider = ({ children }) => {
     const [cartCount, setCartCount] = useState(() => {
       const storedCartCount = sessionStorage.getItem('cartCount');
-      const storeAssetID = sessionStorage.getItem('cartCount');
       return storedCartCount ? parseInt(storedCartCount, 10) : 0;
     });
 
