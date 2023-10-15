@@ -20,7 +20,7 @@ import Badge from '@mui/material/Badge';
 import { styled } from '@mui/material/styles';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { Link } from 'react-router-dom';
-import { useCart } from '../CartContext';
+;
 
 const pages = ['Products', 'Pricing', 'News', 'Blog'];//giving header options value
 //const settings = ['Settings', 'Profile', 'Logout'];//profile options
@@ -38,7 +38,6 @@ function ResponsiveAppBar({}) {/*Mui ResponsiveAppBar with a cart icon*/
     const [anchorElNav, setAnchorElNav] = useState(null);
     const [anchorElUser, setAnchorElUser] = useState(null);
 
-    const {cartCount} = useCart();
 
     const handleOpenNavMenu = (event) => {
         setAnchorElNav(event.currentTarget);
@@ -165,13 +164,11 @@ function ResponsiveAppBar({}) {/*Mui ResponsiveAppBar with a cart icon*/
                                 </IconButton>
                             </Link>
                         </Tooltip>
-                        <Link to="/cartpage">
-                        <IconButton aria-label="cart" style={{ marginLeft:"25px" }}>
-                            <StyledBadge badgeContent={cartCount} color="secondary">
-                                <ShoppingCartIcon style={{ color: "white" }} />
-                            </StyledBadge>
-                        </IconButton>
-                        </Link>
+                        <Link to="/productListing">                      
+                        <IconButton aria-label="cart" style={{ marginLeft:"25px" }}>                         
+                                <ShoppingCartIcon style={{ color: "white" }} />                          
+                        </IconButton> 
+                        </Link>                    
                         <Menu
                             sx={{ mt: '45px' }}
                             id="menu-appbar"
