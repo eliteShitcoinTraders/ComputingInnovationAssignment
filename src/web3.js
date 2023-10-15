@@ -9,10 +9,13 @@ const ganacheAccount = {
     privateKey: "0x3eb5771fe77ccd722f8cf13002a2255bf895a8127802a83a9430967cb1387664"
 };
 
-const contractAddress = "0xeDb6d5A8B901Ba16F3E11Dc3Ce4973FE22C831aD";
+const contractAddress = "0xC75143B48F6C95D252F1dD431CeDA9fb1c3ca963";
 const YourContractABI = ContractData.abi;
-export const purchaseItem = async (itemPriceInWei, itemName, assetId) => {
-    const contract = new web3.eth.Contract(YourContractABI, contractAddress);
+const contract = new web3.eth.Contract(YourContractABI, contractAddress);
+
+
+
+export const purchaseItem = async (itemPriceInWei, itemName, assetId, userName, userEmail) => {
     const gasPrice = await web3.eth.getGasPrice();
     const tx = {
         from: ganacheAccount.address,
@@ -20,7 +23,7 @@ export const purchaseItem = async (itemPriceInWei, itemName, assetId) => {
         value: itemPriceInWei,
         gas: 4000000,
         gasPrice: gasPrice,
-        data: contract.methods.recordPurchase(itemName, itemPriceInWei, assetId).encodeABI()
+        data: contract.methods.recordPurchase(itemName, itemPriceInWei, assetId, userName, userEmail).encodeABI()
     };
 
     const signedTx = await web3.eth.accounts.signTransaction(tx, ganacheAccount.privateKey);

@@ -16,6 +16,7 @@ import Buttons from './components/buttons.js';
 import { purchaseItem } from './web3.js';
 import web3 from './web3.js';
 
+
 const Item = styled(Paper)(({ theme }) => ({
     backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
     ...theme.typography.body2,
@@ -24,11 +25,7 @@ const Item = styled(Paper)(({ theme }) => ({
     color: theme.palette.text.secondary,
 }));
 
-const content = (
-    <div style={{ textAlign: 'left' }}>
-        {`Please provide your information to complete purchase.`}
-    </div>
-);
+
 
 export default function AutoGrid() {
     const { search } = useLocation();
@@ -48,11 +45,20 @@ export default function AutoGrid() {
             setItemPriceInEther(firstItem.Price);
         }
     }, [data]);
+    /* Example usage: */
+    const userName = 'John';
+    const userEmail = 'johndoeee@example.com';
+
+    const [purchaseResult, setPurchaseResult] = useState(null);
 
     const handlePurchase = async () => {
         try {
             const itemPriceInWei = web3.utils.toWei(itemPriceInEther, 'ether');
-            await purchaseItem(itemPriceInWei, itemName, assetId);
+            const result = await purchaseItem(itemPriceInWei, itemName, assetId, userName, userEmail);
+
+            // Assuming that the result from purchaseItem contains purchase data
+            setPurchaseResult(result);
+            console.log(result)
             // You can add any user feedback here, like showing a success message
         } catch (error) {
             console.error("Purchase failed:", error);
@@ -62,18 +68,31 @@ export default function AutoGrid() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
+
             <Grid item xs={12} sm={12} md={12}>
                 <Item><NaviBar /></Item>
             </Grid>
             <Grid direction="row" justifyContent="center" alignItems="center" container spacing={2}>
-                <Grid item xs={6}>
-                    <Item>
-                        <h1>Checkout</h1>
-                        <Text texttitle={<h2>Subtotal: {itemPriceInEther} ETH</h2>} content='' />
-                        <Buttons icon={<MonetizationOnIcon />} onClick={handlePurchase} label="Buy" />
-                    </Item>
-                </Grid>
+                {/* Display "Buy" button or purchase result */}
+                {purchaseResult ? (
+                    <Grid item xs={6}>
+                        <Item>
+                            <h1>Purchase Result: successful</h1>
+                            <h1>{purchaseResult.transactionHash}</h1>
+                        </Item>
+                    </Grid>
+                ) : (
+                    <Grid item xs={6}>
+                        <Item>
+                            <h1>Checkout</h1>
+                            <Text texttitle={<h2>Subtotal: {itemPriceInEther} ETH</h2>} content='' />
+                            <Buttons icon={<MonetizationOnIcon />} onClick={handlePurchase} label="Buy" />
+                        </Item>
+                    </Grid>
+                )}
+
             </Grid>
+
             <Grid item xs={12} sm={12} md={12}>
                 <Item><Footer /></Item>
             </Grid>
