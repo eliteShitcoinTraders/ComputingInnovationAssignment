@@ -2,7 +2,7 @@
     name: henry nguyen
     group: g-99
 */
-import * as React from 'react';
+import React, { useState, useEffect } from 'react';
 import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
@@ -11,23 +11,23 @@ import NaviBar from './components/header.js';
 import Footer from './components/footer';
 import { Text } from './components/textbox.js';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
-import Inputs from './components/inputfield.js';
-import AlertDialog from './components/popup.js';
 import { useLocation } from 'react-router-dom';
+import Buttons from './components/buttons.js';
+import { purchaseItem } from './web3.js';
+import web3 from './web3.js';
 
 const Item = styled(Paper)(({ theme }) => ({
-  backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-  ...theme.typography.body2,
-  padding: theme.spacing(1),
-  textAlign: 'center',
-  color: theme.palette.text.secondary,
+    backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+    ...theme.typography.body2,
+    padding: theme.spacing(1),
+    textAlign: 'center',
+    color: theme.palette.text.secondary,
 }));
 
 const content = (
-  <div style={{textAlign:'left'}}>
-    {`Please provide your information to complete purchase.
-    `}
-  </div>
+    <div style={{ textAlign: 'left' }}>
+        {`Please provide your information to complete purchase.`}
+    </div>
 );
 
 export default function AutoGrid() {
@@ -35,40 +35,48 @@ export default function AutoGrid() {
     const params = new URLSearchParams(search);
     const dataString = params.get('data');
     const data = JSON.parse(decodeURIComponent(dataString));
-    var Asset_ID = 0
-    var Category_ID = 0
-    var Price = 0
-    data.map((data) => {
-        Asset_ID = data.Asset_ID
-        Category_ID = data.category_ID
-        Price = data.Price
 
-    })
-    console.log(Asset_ID)
-  return (
-    
-    <Box sx={{ flexGrow: 1 }}>
-      <Grid item xs={12} sm={12} md={12}>
-          <Item><NaviBar/> </Item>
-      </Grid>
-      <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>{/*center the grid */}
-      
-        <Grid item xs={6}>
-          <Item>
-                      <h1>Checkout</h1>
-                      <Text texttitle={<h2>Subtotal: {Price} ETH</h2>} content={content} /> {/*subtotal prompts for user */}
-            <Inputs/>
-            <AlertDialog infomsg={"Puchase Processed"} confirmmsg={"Close"} icon={<MonetizationOnIcon/>} label={"Buy"}/>{/*popup imported from popup */}            
-          </Item>
-        </Grid>
-       
-      </Grid>
-      
-      <Grid item xs={12} sm={12} md={12}>
-        <Item><Footer/></Item>
-      </Grid>
-    </Box>
-  );
+    const [itemName, setItemName] = useState('Sample Item');
+    const [assetId, setAssetId] = useState(1);
+    const [itemPriceInEther, setItemPriceInEther] = useState('0');
 
-  
+    useEffect(() => {
+        if (data && data.length > 0) {
+            const firstItem = data[0];
+            setItemName(firstItem.Name);
+            setAssetId(firstItem.Asset_ID);
+            setItemPriceInEther(firstItem.Price);
+        }
+    }, [data]);
+
+    const handlePurchase = async () => {
+        try {
+            const itemPriceInWei = web3.utils.toWei(itemPriceInEther, 'ether');
+            await purchaseItem(itemPriceInWei, itemName, assetId);
+            // You can add any user feedback here, like showing a success message
+        } catch (error) {
+            console.error("Purchase failed:", error);
+            // Handle the error. For example, show a user-friendly error message.
+        }
+    };
+
+    return (
+        <Box sx={{ flexGrow: 1 }}>
+            <Grid item xs={12} sm={12} md={12}>
+                <Item><NaviBar /></Item>
+            </Grid>
+            <Grid direction="row" justifyContent="center" alignItems="center" container spacing={2}>
+                <Grid item xs={6}>
+                    <Item>
+                        <h1>Checkout</h1>
+                        <Text texttitle={<h2>Subtotal: {itemPriceInEther} ETH</h2>} content='' />
+                        <Buttons icon={<MonetizationOnIcon />} onClick={handlePurchase} label="Buy" />
+                    </Item>
+                </Grid>
+            </Grid>
+            <Grid item xs={12} sm={12} md={12}>
+                <Item><Footer /></Item>
+            </Grid>
+        </Box>
+    );
 }

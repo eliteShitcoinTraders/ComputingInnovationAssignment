@@ -61,9 +61,6 @@ contract Transaction {
             }
         }
 
-
-
-
         return (itemNames, itemPrices, purchaseTimes, assetIds); // Updated return values
     }
 
