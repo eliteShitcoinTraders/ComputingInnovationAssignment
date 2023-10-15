@@ -15,7 +15,6 @@ import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
 import NotableRow from './components/notableRow.jsx';
 import FooterMain from './components/footer.jsx';
-import SeclectDropDown from './components/selectDropdown.jsx';
 import './components/css/itemcard.css';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
@@ -81,7 +80,7 @@ const containerStyles = {
         fontSize: "25px",
         textAlign: "left",
         marginLeft: "20px",
-        fontWeight:"700"
+        fontWeight:"700",
 };
 
 
@@ -189,10 +188,9 @@ export default function BasicGrid() {/*header function*/
 
 
                 </Grid>
-
-                <Grid item xs={12} sm={12} md={12}>{/*notable row */}
-                    <div
-
+                
+                <Grid sx={{overflowX: "scroll", maxHeight: "250px"}} container spacing={2}>{/*notable row */}
+                    <div 
                             style={headerStyle}
                         >Notable Collection</div>
                 </Grid>
