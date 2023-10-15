@@ -4,7 +4,12 @@
 */
 /*to remove horizontal overflow*/
 .notable-list {
-    display: inline-flex; 
-    max-width:100%;
-
+    display: flex; 
+    max-width: 100%;
+    overflow-x: scroll;
 }
+
+.notable-list > * {
+    min-width: 500px; 
+    padding: 10px; 
+  }
