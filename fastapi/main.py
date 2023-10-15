@@ -114,8 +114,6 @@ def get_assets(Category_ID: str):
         # Fetch all the rows    
         result = cursor.fetchall()
 
-
-
         # Close the cursor and the database connection
         cursor.close()
         connection.close()
@@ -295,37 +293,6 @@ def search_assets(category: int =  None, query: str = None):
     except Exception as e:
         return {"error": str(e)}
     
-
-@app.get("/PersonalAssets/")
-def search_assets(Asset_ID: str):
-    try:
-        # Establish a database connection
-        connection = mysql.connector.connect(**db_config)
-
-        # Create a cursor to execute SQL queries
-        cursor = connection.cursor()
-
-        # Define the base SQL query to retrieve data
-        query_sql = f"SELECT * FROM nft_site.asset WHERE Asset_ID = {Asset_ID}"
-
-        # Execute the SQL query
-        cursor.execute(query_sql)
-
-        # Fetch all the rows
-        result = cursor.fetchall()
-
-        # Convert the result to a list of dictionaries
-        assets = [dict(zip(cursor.column_names, row)) for row in result]
-
-        # Close the cursor and the database connection
-        cursor.close()
-        connection.close()
-
-        return assets
-
-    except Exception as e:
-        return {"error": str(e)}
-
 @app.get("/users/")
 def get_assets():
     try:

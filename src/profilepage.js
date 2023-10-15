@@ -1,11 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Box from '@mui/material/Box';
-import profilePicture from './components/img/eugene.webp';
-import { Typography } from '@mui/material';
 import NaviBar from './components/header.js';
 import Grid from '@mui/material/Grid';
 import Footer from './components/footer.jsx';
-import axios from 'axios';
 import { getUserPurchaseData } from './web3.js'; // Import the function
 
 export default function ProfilePage() {
