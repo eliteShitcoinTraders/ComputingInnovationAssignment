@@ -2,7 +2,7 @@
     name: Rino Quijote
     group: g-99
 */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import profilePicture from './components/img/eugene.webp';
 import { Typography } from '@mui/material';
@@ -13,6 +13,7 @@ import Grid from '@mui/material/Grid';
 import TransacCard from './components/transactioncard';
 import { Item } from './home.js'
 import Footer from './components/footer.jsx';
+import axios from 'axios';
 
 
 /*
@@ -42,6 +43,19 @@ function ProfilePage() {
   //Toggle button || Reference 5.
   const [toggle, setToggle] = useState(true)
   const ButtonText = toggle ? "Inventory" : "Transaction History";
+
+  const [userinfo, setUser] = useState([]);
+  useEffect(() => {
+      const API_URL = 'http://127.0.0.1:8000/users/';
+      axios.get(API_URL)
+          .then(response => {
+              setUser(response.data);
+          console.log(response)}) 
+          .catch(error => {
+              console.error("There was an error fetching data:", error);
+          });
+  }, []);
+
 
 
     /*dummy data*/
@@ -150,7 +164,7 @@ function ProfilePage() {
                 overflow: "hidden",
                 textAlign: "center",
               }}>
-                User: Henry Nguyen
+                User:{userinfo[0].User_Name}
               </Typography>
             </Box>
           </div>
