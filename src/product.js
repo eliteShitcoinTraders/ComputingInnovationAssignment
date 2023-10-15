@@ -20,11 +20,8 @@ import GavelIcon from '@mui/icons-material/Gavel';
 import InfoIcon from '@mui/icons-material/Info';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Footer from './components/footer.jsx';
-import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
-import { useCart } from './CartContext.js';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 
 export default function BasicGrid() {
@@ -65,9 +62,6 @@ export default function BasicGrid() {
   })
 
 
-
-  // retrieves cartcount
-  const { cartCount, addToCart, decrementCart} = useCart();
 
 
   const Item = styled(Paper)(({ theme }) => ({
@@ -175,7 +169,7 @@ export default function BasicGrid() {
       <Grid container spacing={2}>
 
         <Grid item xs={12} sm={12} md={12}>
-          <NaviBar num={cartCount} />
+          <NaviBar />
         </Grid>
 
         <Grid item xs={6} sm={6} md={6}>
@@ -201,8 +195,7 @@ export default function BasicGrid() {
 
             <div>
               <Stack direction="row" spacing={2}>
-                <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/* Button to add to cart */}
-                <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label="Remove from Cart" /> {/* Button to remove from cart */}
+                
                 <Link to={`/purchase?data=${dataString}`}>
                   <Buttons icon={<MonetizationOnIcon />} label="Buy" /> {/* Buy button */}
                 </Link>
