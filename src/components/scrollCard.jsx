@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom';
 
 export default function ActionAreaCard({ cardinfo, header }) {
     //style info
+    console.log(cardinfo)
     const Pricedisplay = {
         display: 'flex', // Use flexbox to arrange items horizontally
         justifyContent: 'space-between', // Add space between the items

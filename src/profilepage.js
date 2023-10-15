@@ -13,8 +13,8 @@ import Footer from './components/footer.jsx';
 import axios from 'axios';
 import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
-
-
+import { getUserPurchaseData } from './web3.js'; // Import the function
+import ScrollCard from './components/scrollCard.jsx';
 /*
 Unsure about in-line references. But, just in case I forget to ask on Tuesday:
 E.g. App from **url**
@@ -26,7 +26,7 @@ E.g. App from **url**
 
 export default function ProfilePage() {
   const [result, setResults] = React.useState([]);
-  const [assetinfo, setAssetInfo] = useState();
+  const [assetinfo, setAssetInfo] = useState([]);
   useEffect(() => {
       const API_URL = 'http://127.0.0.1:8000/users/';
       axios.get(API_URL)
@@ -37,6 +37,61 @@ export default function ProfilePage() {
               console.error("There was an error fetching data:", error);
           });
   }, []);
+
+
+
+
+
+    const header = { headerOne: "Floor Price", headerTwo: "Volume" };
+    const [assetIds, setAssetIds] = useState([]);
+    const [time, setTime] = useState([]);
+    useEffect(() => {
+        // Fetch user purchase data when the component mounts
+        getUserPurchaseData(0, 10) // You can specify the startIndex and count here
+            .then(data => {
+                setAssetIds(data.assetIds);
+                setTime(data.purchaseTimes);
+
+            })
+            .catch(error => {
+                console.error("Error fetching user purchase data:", error);
+            });
+    }, []);
+
+
+
+    // Function to convert Unix timestamp to formatted date and time
+    const formatTimestamp = (timestamp) => {
+        const date = new Date(timestamp * 1000); // Multiply by 1000 to convert to milliseconds
+        return date.toLocaleString(); // Get the formatted date and time
+    };
+
+    // Use the map function to convert the array of timestamps
+    const formattedTimes = time.map((timestamp) => formatTimestamp(timestamp));
+
+
+
+    const [assetInfo, SetAssetInfo] = useState([]);
+
+    const fetchDataByAssetID = (Asset_ID) => {
+        const API_URL = `http://127.0.0.1:8000/PersonalAssets/`;
+
+        axios.get(API_URL, {
+            params: {
+                Asset_ID: Asset_ID,
+            },
+        })
+            .then((response) => {
+                SetAssetInfo(response.data);
+            })
+            .catch((error) => {
+                console.error(`Error fetching data for asset ID :`, error);
+            });
+    };
+    
+
+
+
 
   //Change the styles of the page.
   const pfpBackground = {
@@ -69,14 +124,16 @@ export default function ProfilePage() {
         { url: "https://images.unsplash.com/photo-1657333813883-8da3bc1e2c07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2672&q=80", name: "Yoda5", date: "09/3/2017 ", price: "9 " }
     ];
 
+
+
+
+
+
   return (
     <div style={pfpBackground}>
       < NaviBar />
       <div className="fpInfoAndPic">
-      <hr></hr>
-                   <SearchBar setResults={setResults} />
-                   <SearchResultList result={result} />
-                   <hr></hr>
+
         <div style={{
           //Flexboxes the page and controls horizontal movement
           display: "flex",
@@ -128,38 +185,25 @@ export default function ProfilePage() {
         }}></hr>
         </div>
           
-          {/* Transaction History*/}
-          <div style={inventoryBackground}>
-              <Grid
-                container
-                direction="row"
-                justifyContent="center"
-                alignItems="center"
-                padding="0"
-                containerSpacing={1}
-                style={{
-                  overflow: "auto",
-                  maxHeight: "50vh",
-                          }}>
-                          <Grid container spacing={2}>
-                              <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>{/*description info for top 10*/}
-                                  <h5 style={{ marginRight: "35%", marginLeft: "1.5%" }}>Collection</h5>
-                                  <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
-                                  <h5 style={{ marginRight: "3%" }}>Volume</h5>
+          <div style={pfpBackground}>
+              {/* ... Other code ... */}
+              <div style={inventoryBackground}>
+                  <Grid item xs={12} sm={12} md={12}>
+                      {assetIds.length > 0 ? (
+                          assetIds.map((assetInfo, id) => (
+                              <ScrollCard cardinfo={assetInfo} header={header} key={id} />
+                          ))
+                      ) : (
+                          assetIds.length === 10 ? (
+                              <p>No data available</p>
+                          ) : (
+                              <p>Waiting for 10 values in assetIds...</p>
+                          ))}
+                  </Grid>
+              </div>
+              {/* ... Other code ... */}
+          </div>
 
-                              </Grid>
-                              <Grid item xs={5.8} sm={5.8} md={5.8} style={{ display: "flex" }}>
-                                  <h5 style={{ marginRight: "35%", marginLeft: "4%" }}>Collection</h5>
-                                  <h5 style={{ marginRight: "25%" }}>Floor Price</h5>
-                                  <h5 style={{ marginRight: "3%" }}>Volume</h5>
-                              </Grid>
-                          </Grid>
-                          <Grid item xs={12} sm={12} md={12}>
-                              <hr></hr>
-                    <TransacCard NftData={transactionData} />
-                </Grid>
-              </Grid>
-        </div>
         <Footer/>
         </div>
   );

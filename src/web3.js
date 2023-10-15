@@ -1,4 +1,5 @@
-// Frontend: React + Web3.js
+/* eslint-disable no-undef */
+
 import Web3 from 'web3';
 import ContractData from './Transaction.json'; // Make sure the path is correct
 
@@ -39,6 +40,25 @@ export const purchaseItem = async (itemPriceInWei, itemName, assetId, userName, 
                 });
             }
         });
+}
+
+
+
+export const getUserPurchaseData = async (startIndex, count) => {
+    try {
+        // Call the getUserPurchaseData function of the contract using the specific user's address
+        const result = await contract.methods.getUserPurchaseData(startIndex, count).call({ from: ganacheAccount.address });
+
+        // Parse and return the result
+        const itemPrices = result[1].map(price => web3.utils.fromWei(price.toString(), 'ether'));
+        const purchaseTimes = result[2].map(time => Number(time.toString())); // Convert BigInt to Number
+        const assetIds = result[3].map(id => id.toString());
+
+        return {itemPrices, purchaseTimes, assetIds };
+    } catch (error) {
+        console.error("Error fetching user purchase data:", error);
+        throw error;
+    }
 }
 
 export default web3;
