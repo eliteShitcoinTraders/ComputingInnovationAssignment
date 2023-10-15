@@ -26,16 +26,20 @@ E.g. App from **url**
 
 export default function ProfilePage() {
   const [result, setResults] = React.useState([]);
+<<<<<<< HEAD
   const [assetinfo, setAssetInfo] = useState([]);
+=======
+  const [yodainfo, setYoda] = useState([]);
+>>>>>>> 3741f3789b7fba64d22c6630639c664f005eb953
   useEffect(() => {
-      const API_URL = 'http://127.0.0.1:8000/users/';
-      axios.get(API_URL)
-          .then(response => {
-            setAssetInfo(response.data);
-          })
-          .catch(error => {
-              console.error("There was an error fetching data:", error);
-          });
+    const API_URL = 'http://127.0.0.1:8000/yoda/';
+    axios.get(API_URL)
+      .then(response => {
+        setYoda(response.data);
+      })
+      .catch(error => {
+        console.error("There was an error fetching data:", error);
+      });
   }, []);
 
 
