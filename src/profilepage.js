@@ -26,16 +26,16 @@ E.g. App from **url**
 
 export default function ProfilePage() {
   const [result, setResults] = React.useState([]);
-  const [assetinfo, setAssetInfo] = useState();
+  const [yodainfo, setYoda] = useState([]);
   useEffect(() => {
-      const API_URL = 'http://127.0.0.1:8000/users/';
-      axios.get(API_URL)
-          .then(response => {
-            setAssetInfo(response.data);
-          })
-          .catch(error => {
-              console.error("There was an error fetching data:", error);
-          });
+    const API_URL = 'http://127.0.0.1:8000/yoda/';
+    axios.get(API_URL)
+      .then(response => {
+        setYoda(response.data);
+      })
+      .catch(error => {
+        console.error("There was an error fetching data:", error);
+      });
   }, []);
 
   //Change the styles of the page.

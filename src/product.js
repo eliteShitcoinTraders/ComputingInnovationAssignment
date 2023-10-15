@@ -35,13 +35,13 @@ export default function BasicGrid() {
   var Category = ""
   const numberobject = useParams();
 
-  //Editing rn, Axios connection w/ asset table
   const [asset, setAsset] = useState([]);
   useEffect(() => {
     const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
     axios.get(API_URL)
       .then(response => {
         setAsset(response.data);
+        console.log(response);
       })
       .catch(error => {
         console.error("There was an error fetching data:", error);
@@ -49,7 +49,6 @@ export default function BasicGrid() {
   }, []);
   const dataString = encodeURIComponent(JSON.stringify(asset));
 
-  //End of Axios connection 
   asset.map((asset) => {
     Asset_ID = asset.Asset_ID
     Category_ID = asset.category_ID
