@@ -5,7 +5,8 @@
     "\\Database",
     "\\fastapi",
     "\\migrations",
-    "\\src"
+    "\\src",
+    "\\src\\components"
   ],
   "SelectedNode": "\\fastapi",
   "PreviewInSolutionExplorer": false

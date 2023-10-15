@@ -262,7 +262,12 @@ def search_assets(category: int =  None, query: str = None):
         # Define the base SQL query to retrieve data
         query_sql = "SELECT * FROM nft_site.asset WHERE 1"
 
+
+
+
         # Add conditions based on category and query parameters if they are provided
+
+             
         if category is not None:
             query_sql += f" AND category_ID = {category+1}"
 

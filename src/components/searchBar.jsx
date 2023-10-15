@@ -33,13 +33,18 @@ const SearchBar = ({ setResults }) => {
 
 
 
-    const fetchData1 = (searchInput, selectedCategory) => {
+    const fetchData1 = () => {
         // Construct the API URL with category and search input as query parameters
         const API_URL = `http://127.0.0.1:8000/search/`;
         console.log(age)
         console.log(input)
 
-        axios.get(API_URL, { params: { category: age, query: input } })
+        axios.get(API_URL, {
+            params: {
+                category: age !== '' ? age : null,
+                query: input,
+            },
+        })
             .then((response) => {
                 const assets = response.data;
                 setResults(assets);
@@ -50,19 +55,22 @@ const SearchBar = ({ setResults }) => {
             });
     };
 
-
+    useEffect(() => {
+        // Check if both age and input have values
+        if (age !== '' || input !== "") {
+            fetchData1();
+        }
+    }, [age, input]);
     const handleChange = (value) => {
         setInput(value);
-        //fetchData(value);
-        fetchData1(value,age);
+        // Add a delay before calling fetchData1
+
     };
-
-
-
 
     const handleChanges = (event) => {
         setAge(event.target.value);
     };
+
     return (
         <Box sx={{ minWidth: '120', maxWidth: '99.5%' }}>
 

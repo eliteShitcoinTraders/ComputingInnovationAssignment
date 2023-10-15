@@ -17,3 +17,4 @@ with open(abi_file_path, 'r') as abi_file:
     contract = web3.eth.contract(address=contract_address, abi=contract_abi)
 
 
+    time.sleep(15)

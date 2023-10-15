@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
 import Footer from './components/footer.jsx';
 import ScrollCard from './components/scrollCard.jsx';
-import SeclectDropDown from './components/selectDropdown.jsx';
 import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
 import axios from 'axios';
@@ -81,27 +80,36 @@ export default function BasicGrid() {
                     <hr></hr>
 
                     <SearchBar setResults={setResults} />
-                    <SearchResultList result={result} />
                     <hr></hr>
                 </Grid>
-                <Grid item xs={12} sm={12} md={12}>{/*header for listing */}
+                <Grid item xs={12} sm={12} md={12}>
+                    {/* Header for listing */}
                     <div style={{
                         fontSize: "25px",
                         textAlign: "left",
                         marginLeft: "20px",
                         fontWeight: "700"
-                    }}
-                    >All Listing</div>
+                    }}>
+                        {result.length === 0 ? "All Listing" : "Searched Result"}
+                    </div>
                     <hr></hr>
                 </Grid>
-                <Grid container spacing={3} style={{ display: "flex" }}>{/*print out the available lsiting*/}
-                    {cardinfo.map((card, id) => (
-                        <Grid item xs={2.14} sm={2.14} md={2.14} style={{ marginLeft: "50px" }}>
-                            <ScrollCard cardinfo={card} header={header} key={id} />
-                        </Grid>
-
-                    ))}
-
+                <Grid container spacing={3} style={{ display: "flex" }}>
+                    {result.length === 0 ? (
+                        // Render cardinfo.map when result is empty
+                        cardinfo.map((card, id) => (
+                            <Grid item xs={2.14} sm={2.14} md={2.14} style={{ marginLeft: "50px" }} key={id}>
+                                <ScrollCard cardinfo={card} header={header} />
+                            </Grid>
+                        ))
+                    ) : (
+                        // Render result.map when result is not empty
+                        result.map((card, id) => (
+                            <Grid item xs={2.14} sm={2.14} md={2.14} style={{ marginLeft: "50px" }} key={id}>
+                                <ScrollCard cardinfo={card} header={header} />
+                            </Grid>
+                        ))
+                    )}
                 </Grid>
 
 
