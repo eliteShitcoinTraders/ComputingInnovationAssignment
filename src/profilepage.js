@@ -24,6 +24,12 @@ export default function ProfilePage() {
             });
     }, []);
 
+    // Function to convert Unix timestamp to formatted date and time
+    const formatTimestamp = timestamp => {
+        const date = new Date(timestamp * 1000); // Multiply by 1000 to convert to milliseconds
+        return date.toLocaleString(); // Get the formatted date and time
+    };
+
     // Change the styles of the page.
     const pfpBackground = {
         backgroundColor: "#F5F5F5",
@@ -35,9 +41,6 @@ export default function ProfilePage() {
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
-        border: "1px solid #ccc",
-        borderRadius: "5px",
-        padding: "10px",
     };
 
     return (
@@ -52,23 +55,18 @@ export default function ProfilePage() {
                 {isLoading ? (
                     <p>Loading...</p>
                 ) : (
-                    <div>
-                        <Typography variant="h2" gutterBottom>
-                            Transaction History
-                        </Typography>
-                        <Grid container spacing={2}>
-                            {assetData.assetIds.map((assetId, id) => (
-                                <Grid item xs={12} sm={12} md={4} key={id} style={gridItemStyle}>
-                                    <div>
-                                        <p>Asset ID: {assetId}</p>
-                                        <p>Time: {assetData.purchaseTimes[id]}</p>
-                                        {/* Handle prices when it's undefined */}
-                                        <p>Price: {assetData.itemPrices ? assetData.itemPrices[id] : 'N/A'} ETH</p>
-                                    </div>
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </div>
+                    <Grid container spacing={2}>
+                        {assetData.assetIds.map((assetId, id) => (
+                            <Grid item xs={12} sm={12} md={4} key={id} style={gridItemStyle}>
+                                <div>
+                                    <p>Asset ID: {assetId}</p>
+                                    <p>Time: {formatTimestamp(assetData.purchaseTimes[id])}</p>
+                                    {/* Handle prices when it's undefined */}
+                                    <p>Price: {assetData.itemPrices ? assetData.itemPrices[id] : 'N/A'} ETH</p>
+                                </div>
+                            </Grid>
+                        ))}
+                    </Grid>
                 )}
             </div>
             <Footer />
