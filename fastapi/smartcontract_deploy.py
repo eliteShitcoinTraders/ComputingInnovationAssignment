@@ -22,9 +22,9 @@ async def funcTest1():
     # Default is 1337 or with the PORT in your Gaanche
     chain_id = 1337
     # Find in you account
-    my_address = "0xBDa40Ae46877164F9BD16AD63C08d2Bdf2A53193"
+    my_address = "0xA91e61d2941F0836DBcCC0573B1c897FfEf8BBA7"
     # Find in you account
-    private_key = "0x3eb5771fe77ccd722f8cf13002a2255bf895a8127802a83a9430967cb1387664"
+    private_key = "0x9c2cccea8950a2c977f25b2ec6859c2a34791d70a99ee3273be6d69d74c2b91f"
 
 
     with open("./SimpleStorage.sol", "r") as file:

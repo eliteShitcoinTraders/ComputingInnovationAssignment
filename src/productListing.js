@@ -10,7 +10,6 @@ import Grid from '@mui/material/Grid';
 import NaviBar from './components/header.js';
 import Footer from './components/footer.jsx';
 import ScrollCard from './components/scrollCard.jsx';
-import SelectDropdown from './components/selectDropdown.jsx';
 import SearchBar from './components/searchBar.jsx';
 import SearchResultList from './components/searchResultList.jsx';
 import axios from 'axios';
@@ -77,7 +76,6 @@ export default function BasicGrid() {
                 </Grid>
                 <Grid item xs={12} sm={12} md={12} > {/*search functionalities*/}
                     <hr></hr>
-                    < SelectDropdown />
 
                     <SearchBar setResults={setResults} />
                     <SearchResultList result={result} />

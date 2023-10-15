@@ -13,7 +13,7 @@ origins = ["*"]
 db_config = {
     "host": "localhost",
     "user": "root",
-    "password": "123456789", #password needs to be changed
+    "password": "data123", #password needs to be changed
     "database": "nft_site"
 }
 

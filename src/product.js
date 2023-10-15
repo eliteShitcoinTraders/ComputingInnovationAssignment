@@ -21,7 +21,6 @@ import InfoIcon from '@mui/icons-material/Info';
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import Footer from './components/footer.jsx';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
-import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import LocalOfferIcon from '@mui/icons-material/LocalOffer';
 import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
@@ -204,10 +203,6 @@ export default function BasicGrid() {
               <Stack direction="row" spacing={2} >
                 <Buttons onClick={addToCart} icon={<LocalGroceryStoreIcon />} label={`Add to cart (${cartCount})`} /> {/*button to add to cart */}
                 <Buttons onClick={decrementCart} icon={<LocalOfferIcon />} label={"Remove from Cart"} />
-
-                <Link to={`/purchase?data=${dataString}`}>
-                  <Buttons icon={<MonetizationOnIcon />} label={"Buy"} /> {/*buy button */}
-                </Link>
 
               </Stack>
             </div>

@@ -69,6 +69,7 @@ module.exports = {
       port: 7545,            // standard ethereum port (default: none)
       network_id: "*",       // any network (default: none)
      },
+     
     //
     // An additional network, but with some advanced options…
     // advanced: {
