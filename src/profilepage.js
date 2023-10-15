@@ -2,7 +2,7 @@
     name: Rino Quijote
     group: g-99
 */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import profilePicture from './components/img/eugene.webp';
 import { Typography } from '@mui/material';
@@ -13,7 +13,6 @@ import Grid from '@mui/material/Grid';
 import TransacCard from './components/transactioncard';
 import { Item } from './home.js'
 import Footer from './components/footer.jsx';
-import axios from 'axios';
 
 
 /*
@@ -25,7 +24,6 @@ E.g. App from **url**
 4. ImageList from https://mui.com/material-ui/react-image-list/#system-StandardImageList.js
 5. Toggle from https://www.youtube.com/watch?v=5CTFTDpHHto&t=402s&ab_channel=TheCodeAngle
 */
-
 
 function ProfilePage() {
   //Change the styles of the page.
@@ -45,18 +43,6 @@ function ProfilePage() {
   const [toggle, setToggle] = useState(true)
   const ButtonText = toggle ? "Inventory" : "Transaction History";
 
-
-  const [userinfo, setUser] = useState([]);
-    useEffect(() => {
-        const API_URL = 'http://127.0.0.1:8000/users/';
-        axios.get(API_URL)
-            .then(response => {
-                setUser(response.data);
-            console.log(response)}) 
-            .catch(error => {
-                console.error("There was an error fetching data:", error);
-            });
-    }, []);
 
     /*dummy data*/
 
@@ -164,7 +150,7 @@ function ProfilePage() {
                 overflow: "hidden",
                 textAlign: "center",
               }}>
-                User: {userinfo.User_Name}
+                User: Henry Nguyen
               </Typography>
             </Box>
           </div>

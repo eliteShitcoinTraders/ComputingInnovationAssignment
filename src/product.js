@@ -39,12 +39,12 @@ export default function BasicGrid() {
   const numberobject = useParams();
 
   //Editing rn, Axios connection w/ asset table
-  const [asset, setUser] = useState([]);
+  const [asset, setAsset] = useState([]);
   useEffect(() => {
-    const API_URL = `http://127.0.0.1:8000/user/${numberobject.assetID}`;
+    const API_URL = `http://127.0.0.1:8000/productsearch/${numberobject.assetID}`;
     axios.get(API_URL)
       .then(response => {
-        setUser(response.data);
+        setAsset(response.data);
       })
       .catch(error => {
         console.error("There was an error fetching data:", error);
