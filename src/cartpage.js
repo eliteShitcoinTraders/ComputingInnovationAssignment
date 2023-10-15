@@ -14,6 +14,8 @@ import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
 import AlertDialog from './components/popup.js';
 import DataGridDemo from './components/datagrid.js';
 import { useCart } from './CartContext.js';
+import axios from 'axios';
+import { useState, useEffect } from 'react';
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,8 +33,19 @@ const content = (
 );
 
 
-
 export default function AutoGrid() {
+
+  const [assets, setAssets] = useState([]);
+  useEffect(() => {
+      const API_URL = 'http://127.0.0.1:8000/assets/';
+      axios.get(API_URL)
+          .then(response => {
+            setAssets(response.data);
+          })
+          .catch(error => {
+              console.error("There was an error fetching data:", error);
+          });
+  }, []);
 
   const {cartCount} = useCart();
 
@@ -74,12 +87,12 @@ export default function AutoGrid() {
   return (
     
     <div>
+
       <div>
       <NaviBar/>
     </div>
     <Box sx={{ flexGrow: 1 }}>
       <Grid item xs={12} sm={4} md={8}>
-         
       </Grid>
       <Grid  direction="row" justifyContent="center" alignItems="center" container spacing={2}>{/*center the grid */}
       
